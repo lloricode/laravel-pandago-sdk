@@ -3,8 +3,8 @@
 namespace Lloricode\LaravelPandagoSdk\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Lloricode\LaravelPandagoSdk\LaravelPandagoSdkServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

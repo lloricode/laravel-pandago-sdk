@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk;
 
+use Lloricode\LaravelPandagoSdk\Commands\LaravelPandagoSdkCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Lloricode\LaravelPandagoSdk\Commands\LaravelPandagoSdkCommand;
 
 class LaravelPandagoSdkServiceProvider extends PackageServiceProvider
 {
