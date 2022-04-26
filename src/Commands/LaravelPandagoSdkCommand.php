@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Lloricode\LaravelPandagoSdk\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelPandagoSdkCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-pandago-sdk';
 
     public $description = 'My command';
 
