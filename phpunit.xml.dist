@@ -36,4 +36,22 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <env name="RAY_ENABLED" value="true"/>
+        <env name="SEND_CACHE_TO_RAY" value="false"/>
+        <env name="SEND_DUMPS_TO_RAY" value="true"/>
+        <env name="SEND_JOBS_TO_RAY" value="false"/>
+        <env name="SEND_LOG_CALLS_TO_RAY" value="true"/>
+        <env name="SEND_QUERIES_TO_RAY" value="false"/>
+        <env name="SEND_DUPLICATE_QUERIES_TO_RAY" value="false"/>
+        <env name="SEND_SLOW_QUERIES_TO_RAY" value="false"/>
+        <env name="SEND_REQUESTS_TO_RAY" value="false"/>
+        <env name="SEND_HTTP_CLIENT_REQUESTS_TO_RAY" value="false"/>
+        <env name="SEND_VIEWS_TO_RAY" value="false"/>
+        <env name="SEND_EXCEPTIONS_TO_RAY" value="true"/>
+        <env name="RAY_HOST" value="10.0.2.2"/>
+        <env name="RAY_PORT" value="23517"/>
+        <env name="RAY_REMOTE_PATH" value=""/>
+        <env name="RAY_LOCAL_PATH" value=""/>
+    </php>
 </phpunit>
