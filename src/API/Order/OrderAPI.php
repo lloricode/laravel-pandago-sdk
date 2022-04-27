@@ -34,7 +34,6 @@ class OrderAPI extends BaseAPI
         return $response;
     }
 
-
     public function coordinates()
     {
         $response = $this->pandagoClient
@@ -56,5 +55,4 @@ class OrderAPI extends BaseAPI
 
         return new FeeResponseDTO($response->collect()->toArray());
     }
-
 }

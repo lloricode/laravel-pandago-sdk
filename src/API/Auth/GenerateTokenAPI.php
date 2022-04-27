@@ -15,7 +15,6 @@ class GenerateTokenAPI
     public const BASE_URL_SANDBOX = 'https://sts-st.deliveryhero.io';
     protected string $baseUrl;
 
-
     public function __construct(string $environment = PandagoClient::ENVIRONMENT_SANDBOX)
     {
         switch ($environment) {

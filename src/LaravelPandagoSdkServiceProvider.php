@@ -24,12 +24,12 @@ class LaravelPandagoSdkServiceProvider extends PackageServiceProvider
 
         $this->app->singleton(
             GenerateTokenAPI::class,
-            fn() => new GenerateTokenAPI($mode)
+            fn () => new GenerateTokenAPI($mode)
         );
 
         $this->app->singleton(
             PandagoClient::class,
-            fn() => new PandagoClient(
+            fn () => new PandagoClient(
                 app(
                     $mode === PandagoClient::ENVIRONMENT_TESTING
                         ? FakeGenerateTokenAPI::class

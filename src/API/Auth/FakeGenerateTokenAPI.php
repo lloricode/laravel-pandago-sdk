@@ -2,15 +2,11 @@
 
 namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
-use ErrorException;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Facades\Http;
-use Lloricode\LaravelPandagoSdk\DTO\Auth\Token;
-use Lloricode\LaravelPandagoSdk\PandagoClient;
 
 class FakeGenerateTokenAPI extends GenerateTokenAPI
 {
-
     public function fake(?PromiseInterface $response = null): self
     {
         $response ??= Http::response(

@@ -142,13 +142,14 @@ FAKE;
     $payloadArray = json_decode($payload, true);
 
     $response = FakeOrderAPI::new()
-        ->fakeFee(Http::response(<<<FAKE
+        ->fakeFee(Http::response(
+            <<<FAKE
 {
   "client_order_id": "client-ref-000001",
   "estimated_delivery_fee": 8.17
 }
 FAKE
-))
+        ))
         ->fee(new FeeDTO($payloadArray));
 
     expect($response)
