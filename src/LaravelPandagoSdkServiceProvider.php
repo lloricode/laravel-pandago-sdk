@@ -2,6 +2,8 @@
 
 namespace Lloricode\LaravelPandagoSdk;
 
+use Lloricode\LaravelPandagoSdk\API\Auth\FakeGenerateTokenAPI;
+use Lloricode\LaravelPandagoSdk\API\Auth\GenerateTokenAPI;
 use Lloricode\LaravelPandagoSdk\Commands\LaravelPandagoSdkCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -10,16 +12,31 @@ class LaravelPandagoSdkServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('laravel-pandago-sdk')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-pandago-sdk_table')
             ->hasCommand(LaravelPandagoSdkCommand::class);
+    }
+
+    public function packageRegistered(): void
+    {
+        $mode = config('pandago-sdk.mode');
+
+        $this->app->singleton(
+            GenerateTokenAPI::class,
+            fn() => new GenerateTokenAPI($mode)
+        );
+
+        $this->app->singleton(
+            PandagoClient::class,
+            fn() => new PandagoClient(
+                app(
+                    $mode === PandagoClient::ENVIRONMENT_TESTING
+                        ? FakeGenerateTokenAPI::class
+                        : GenerateTokenAPI::class
+                ),
+                $mode
+            )
+        );
     }
 }
