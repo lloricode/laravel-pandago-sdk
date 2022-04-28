@@ -9,14 +9,13 @@ it('generate token', function () {
     $accessToken = faker()->word;
     $expiresInSeconds = faker()->randomDigitNotZero();
 
-    $token = GenerateTokenAPI::newFake()
-        ->fake(
-            Http::response(
-                <<<FAKE
+    $token = GenerateTokenAPI::newFake(
+        Http::response(
+            <<<FAKE
 {"access_token":"$accessToken","expires_in":$expiresInSeconds}
 FAKE
-            )
         )
+    )
         ->token();
 
     expect($token)

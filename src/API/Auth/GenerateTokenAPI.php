@@ -3,6 +3,7 @@
 namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
 use ErrorException;
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Facades\Http;
 use Lloricode\LaravelPandagoSdk\DTO\Auth\Token;
 use Lloricode\LaravelPandagoSdk\PandagoClient;
@@ -42,9 +43,9 @@ class GenerateTokenAPI
         return app(static::class);
     }
 
-    public static function newFake(): FakeGenerateTokenAPI
+    public static function newFake(?PromiseInterface $response = null): FakeGenerateTokenAPI
     {
-        return app(FakeGenerateTokenAPI::class);
+        return app(FakeGenerateTokenAPI::class)->fake($response);
     }
 
     /**
