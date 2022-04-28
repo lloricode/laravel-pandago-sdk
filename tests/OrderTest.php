@@ -217,6 +217,8 @@ it('get fee estimate', function () {
     "notes": "use the left side door"
   },
   "recipient": {
+    "name": "Pandago",
+    "phone_number": "+6500000000",
     "location": {
       "address": "20 Esplanade Drive",
       "latitude": 1.2857488,
@@ -265,6 +267,8 @@ it('get time estimate', function () {
     "notes": "use the left side door"
   },
   "recipient": {
+    "name": "User",
+    "phone_number": "+6500000000",
     "location": {
       "address": "20 Esplanade Drive",
       "latitude": 1.2857488,
@@ -282,7 +286,6 @@ FAKE;
 
     $payloadResponse = <<<FAKE
 {
-  "client_order_id": "client-ref-000001",
   "estimated_pickup_time": "2018-09-13T01:30:52.123Z",
   "estimated_delivery_time": "2018-09-13T01:45:52.123Z"
 }
