@@ -48,7 +48,7 @@ class PandagoClient
                 throw new ErrorException("Invalid environment `$environment`.");
         }
 
-        $this->token = $generateTokenAPI->token();
+        $this->token = $generateTokenAPI->generate();
     }
 
 //    /**

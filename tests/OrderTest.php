@@ -5,6 +5,7 @@ use Lloricode\LaravelPandagoSdk\API\Order\OrderAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateDTO;
+use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 
 use function PHPUnit\Framework\assertEquals;
 
@@ -56,7 +57,7 @@ FAKE;
 
     $arrayPayload = json_decode($orderPayload, true);
 
-    $orderResponse = OrderAPI::newFake()
+    $orderResponse = LaravelPandagoSdk::order()->fake()
         ->fakeSubmit(Http::response($arrayPayload))
         ->submit(new OrderDTO($payload));
 
@@ -155,7 +156,7 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $dto = OrderAPI::newFake()
+    $dto = LaravelPandagoSdk::order()->fake()
         ->fakeShow('y0ud-000001', Http::response($payloadArray))
         ->show('y0ud-000001');
 
@@ -165,7 +166,7 @@ FAKE;
 it('cancel', function () {
     $payload = '{"message":"reason has been modified to REASON_UNKNOWN"}';
 
-    $response = OrderAPI::newFake()
+    $response = LaravelPandagoSdk::order()->fake()
         ->fakeCancel(
             'order-id',
             Http::response($payload, 203)
@@ -187,7 +188,8 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $dto = OrderAPI::newFake()
+    $dto = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeCoordinates('client-ref-000001', Http::response($payloadArray))
         ->coordinates('client-ref-000001');
 
@@ -223,7 +225,7 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $response = OrderAPI::newFake()
+    $response = LaravelPandagoSdk::order()->fake()
         ->fakeFeeEstimate(
             Http::response(
                 <<<FAKE
@@ -279,7 +281,7 @@ FAKE;
 FAKE;
     $payloadResponseArray = json_decode($payloadResponse, true);
 
-    $dto = OrderAPI::newFake()
+    $dto = LaravelPandagoSdk::order()->fake()
         ->fakeTimeEstimate(Http::response($payloadResponse))
         ->timeEstimate(new TimeEstimateDTO($payloadArray));
 

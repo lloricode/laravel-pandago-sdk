@@ -19,5 +19,5 @@ abstract class BaseAPI
         return app(static::class);
     }
 
-    abstract public static function newFake(): self;
+    abstract public static function fake(): self;
 }

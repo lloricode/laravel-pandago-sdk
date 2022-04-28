@@ -16,7 +16,7 @@ class OrderAPI extends BaseAPI
 {
     protected const URL = 'sg/api/v1/orders';
 
-    public static function newFake(): FakeOrderAPI
+    public static function fake(): FakeOrderAPI
     {
         return app(FakeOrderAPI::class);
     }

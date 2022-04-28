@@ -54,7 +54,7 @@ class GenerateTokenAPI
     /**
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function token(): Token
+    public function generate(): Token
     {
         $response = Http::baseUrl($this->baseUrl)
             ->retry(config('pandago-sdk.retry'))

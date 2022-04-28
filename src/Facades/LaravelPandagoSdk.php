@@ -5,12 +5,12 @@ namespace Lloricode\LaravelPandagoSdk\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Lloricode\LaravelPandagoSdk\LaravelPandagoSdk
+ * @mixin  \Lloricode\LaravelPandagoSdk\LaravelPandagoSdk
  */
 class LaravelPandagoSdk extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return 'laravel-pandago-sdk';
+        return \Lloricode\LaravelPandagoSdk\LaravelPandagoSdk::class;
     }
 }
