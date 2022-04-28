@@ -9,4 +9,5 @@ class LocationDTO extends DataTransferObject
     public string $address;
     public float $latitude;
     public float $longitude;
+    public ?string $notes;
 }

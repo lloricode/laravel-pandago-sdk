@@ -19,7 +19,8 @@ it('submit', function (array $payload) {
     "location": {
       "address": "1 2nd Street #08-01",
       "latitude": 1.2923742,
-      "longitude": 103.8486029
+      "longitude": 103.8486029,
+      "notes": "my notes"
     },
     "notes": "use the left side door"
   },
@@ -29,7 +30,8 @@ it('submit', function (array $payload) {
     "location": {
       "address": "20 Esplanade Drive",
       "latitude": 1.2857488,
-      "longitude": 103.8548608
+      "longitude": 103.8548608,
+      "notes": "my notes 2"
     },
     "notes": "use lift A and leave at the front door"
   },
@@ -37,7 +39,8 @@ it('submit', function (array $payload) {
   "payment_method": "PAID",
   "coldbag_needed": false,
   "status": "NEW",
-  "delivery_fee": 8.17,
+  "description": "my description",
+  "delivery_fee": 8,
   "timeline": {
     "estimated_pickup_time": "",
     "estimated_delivery_time": ""
@@ -73,7 +76,8 @@ test('generate-dto', function () {
     "location": {
       "address": "1 2nd Street #08-01",
       "latitude": 1.2923742,
-      "longitude": 103.8486029
+      "longitude": 103.8486029,
+      "notes":"my notes"
     },
     "notes": "use the left side door"
   },
@@ -83,7 +87,8 @@ test('generate-dto', function () {
     "location": {
       "address": "20 Esplanade Drive",
       "latitude": 1.2857488,
-      "longitude": 103.8548608
+      "longitude": 103.8548608,
+      "notes":"my notes 2"
     },
     "notes": "use lift A and leave at the front door"
   },
@@ -113,7 +118,8 @@ it('show', function () {
     "location": {
       "address": "1 2nd Street #08-01",
       "latitude": 1.2923742,
-      "longitude": 103.8486029
+      "longitude": 103.8486029,
+      "notes": "my notes"
     },
     "notes": "use the left side door"
   },
@@ -123,7 +129,8 @@ it('show', function () {
     "location": {
       "address": "20 Esplanade Drive",
       "latitude": 1.2857488,
-      "longitude": 103.8548608
+      "longitude": 103.8548608,
+      "notes": "my notes 2"
     },
     "notes": "use lift A and leave at the front door"
   },
@@ -132,7 +139,7 @@ it('show', function () {
   "description": "Refreshing drink",
   "amount": 23.5,
   "status": "NEW",
-  "delivery_fee": 8.17,
+  "delivery_fee": 8,
   "timeline": {
     "estimated_pickup_time": "",
     "estimated_delivery_time": ""

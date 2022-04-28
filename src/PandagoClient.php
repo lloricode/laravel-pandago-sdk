@@ -75,7 +75,7 @@ class PandagoClient
         return Http::baseUrl($this->base_url)
             ->withToken($this->token->access_token, $this->token->token_type)
             ->retry(config('pandago-sdk.retry'))
-            ->asForm()
+            ->asJson()
             ->acceptJson();
     }
 
