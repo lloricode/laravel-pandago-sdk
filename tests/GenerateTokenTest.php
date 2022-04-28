@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Lloricode\LaravelPandagoSdk\API\Auth\GenerateTokenAPI;
 
@@ -7,7 +8,7 @@ use function Pest\Faker\faker;
 
 it('generate token', function () {
     $accessToken = faker()->word;
-    $expiresInSeconds = faker()->randomDigitNotZero();
+    $expiresInSeconds = Arr::random(range(1_000, 2_000, 10));
 
     $token = GenerateTokenAPI::newFake(
         Http::response(
