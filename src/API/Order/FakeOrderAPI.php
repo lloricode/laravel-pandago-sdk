@@ -43,7 +43,7 @@ class FakeOrderAPI extends OrderAPI
         return $this;
     }
 
-    public function fakeFee(?PromiseInterface $response = null): self
+    public function fakeFeeEstimate(?PromiseInterface $response = null): self
     {
         $response ??= Http::response();
 

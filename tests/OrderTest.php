@@ -223,7 +223,7 @@ FAKE;
     $payloadArray = json_decode($payload, true);
 
     $response = FakeOrderAPI::new()
-        ->fakeFee(
+        ->fakeFeeEstimate(
             Http::response(
                 <<<FAKE
 {
@@ -233,7 +233,7 @@ FAKE;
 FAKE
             )
         )
-        ->fee(new FeeDTO($payloadArray));
+        ->feeEstimate(new FeeDTO($payloadArray));
 
     expect($response)
         ->client_order_id->toBe('client-ref-000001')

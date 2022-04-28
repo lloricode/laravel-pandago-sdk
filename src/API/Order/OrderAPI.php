@@ -58,7 +58,7 @@ class OrderAPI extends BaseAPI
         return new CoordinatesDTO($response->collect()->toArray());
     }
 
-    public function fee(FeeDTO $feeDTO): FeeResponseDTO
+    public function feeEstimate(FeeDTO $feeDTO): FeeResponseDTO
     {
         $response = $this->pandagoClient
             ->client()
