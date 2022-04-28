@@ -6,5 +6,5 @@ class OrderShowResponseDTO extends OrderResponseDTO
 {
     public string $description;
     public string $tracking_link;
-    public CancellationDTO $cancellation;
+    public ?CancellationDTO $cancellation;
 }
