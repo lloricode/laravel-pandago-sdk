@@ -15,6 +15,7 @@ class FakeOrderAPI extends OrderAPI
 
         return $this;
     }
+
     public function fakeShow(string $orderId, ?PromiseInterface $response = null): self
     {
         $response ??= Http::response();
@@ -24,7 +25,7 @@ class FakeOrderAPI extends OrderAPI
         return $this;
     }
 
-    public function fakeCancel(string $orderId,?PromiseInterface $response = null): self
+    public function fakeCancel(string $orderId, ?PromiseInterface $response = null): self
     {
         $response ??= Http::response(null, 203);
 
