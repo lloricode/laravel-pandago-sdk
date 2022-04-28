@@ -34,7 +34,8 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5.20",
-        "spatie/laravel-ray": "^1.29.6"
+        "spatie/laravel-ray": "^1.29.6",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
