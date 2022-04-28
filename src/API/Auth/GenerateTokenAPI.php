@@ -56,14 +56,15 @@ class GenerateTokenAPI
      */
     public function generate(): Token
     {
-        $response = Http::baseUrl($this->baseUrl)
-            ->retry(config('pandago-sdk.retry'))
-            ->asJson()
-            ->acceptJson()
-            ->post(self::URL, config('pandago-sdk.auth'));
-
-        $response->throw();
-
-        return new Token($response->collect()->toArray());
+        return new Token(
+            Http::baseUrl($this->baseUrl)
+                ->retry(config('pandago-sdk.retry'))
+                ->asJson()
+                ->acceptJson()
+                ->post(self::URL, config('pandago-sdk.auth'))
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 }

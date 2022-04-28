@@ -26,13 +26,14 @@ class OrderAPI extends BaseAPI
      */
     public function submit(OrderDTO $orderDTO): OrderResponseDTO
     {
-        $response = $this->pandagoClient
-            ->client()
-            ->post(self::URL, $orderDTO->toArray());
-
-        $response->throw();
-
-        return new OrderResponseDTO($response->collect()->toArray());
+        return new OrderResponseDTO(
+            $this->pandagoClient
+                ->client()
+                ->post(self::URL, $orderDTO->toArray())
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 
     /**
@@ -40,13 +41,14 @@ class OrderAPI extends BaseAPI
      */
     public function show(string $orderId): OrderShowResponseDTO
     {
-        $response = $this->pandagoClient
-            ->client()
-            ->get(self::URL.'/'.$orderId);
-
-        $response->throw();
-
-        return new OrderShowResponseDTO($response->collect()->toArray());
+        return new OrderShowResponseDTO(
+            $this->pandagoClient
+                ->client()
+                ->get(self::URL.'/'.$orderId)
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 
     /**
@@ -54,13 +56,10 @@ class OrderAPI extends BaseAPI
      */
     public function cancel(string $orderId, string $reason)
     {
-        $response = $this->pandagoClient
+        return $this->pandagoClient
             ->client()
-            ->delete(self::URL.'/'.$orderId, ['reason' => $reason]);
-
-        $response->throw();
-
-        return $response;
+            ->delete(self::URL.'/'.$orderId, ['reason' => $reason])
+            ->throw();
     }
 
     /**
@@ -68,13 +67,14 @@ class OrderAPI extends BaseAPI
      */
     public function coordinates(string $orderId): CoordinatesDTO
     {
-        $response = $this->pandagoClient
-            ->client()
-            ->get(self::URL.'/'.$orderId.'/coordinates');
-
-        $response->throw();
-
-        return new CoordinatesDTO($response->collect()->toArray());
+        return new CoordinatesDTO(
+            $this->pandagoClient
+                ->client()
+                ->get(self::URL.'/'.$orderId.'/coordinates')
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 
     /**
@@ -82,13 +82,14 @@ class OrderAPI extends BaseAPI
      */
     public function feeEstimate(FeeEstimateDTO $feeEstimateDTO): FeeEstimateResponseDTO
     {
-        $response = $this->pandagoClient
-            ->client()
-            ->post(self::URL.'/fee', $feeEstimateDTO->toArray());
-
-        $response->throw();
-
-        return new FeeEstimateResponseDTO($response->collect()->toArray());
+        return new FeeEstimateResponseDTO(
+            $this->pandagoClient
+                ->client()
+                ->post(self::URL.'/fee', $feeEstimateDTO->toArray())
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 
     /**
@@ -96,12 +97,13 @@ class OrderAPI extends BaseAPI
      */
     public function timeEstimate(TimeEstimateDTO $timeEstimateDTO): TimeEstimateResponseDTO
     {
-        $response = $this->pandagoClient
-            ->client()
-            ->post(self::URL.'/time', $timeEstimateDTO->toArray());
-
-        $response->throw();
-
-        return new TimeEstimateResponseDTO($response->collect()->toArray());
+        return new TimeEstimateResponseDTO(
+            $this->pandagoClient
+                ->client()
+                ->post(self::URL.'/time', $timeEstimateDTO->toArray())
+                ->throw()
+                ->collect()
+                ->toArray()
+        );
     }
 }

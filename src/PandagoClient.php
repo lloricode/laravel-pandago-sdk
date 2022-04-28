@@ -70,14 +70,13 @@ class PandagoClient
 //        );
 //    }
 
-    public function client(array $headers = []): PendingRequest
+    public function client(): PendingRequest
     {
         return Http::baseUrl($this->base_url)
+            ->withToken($this->token->access_token)
             ->retry(config('pandago-sdk.retry'))
             ->asJson()
-            ->acceptJson()
-            ->withToken($this->token->access_token)
-            ->withHeaders($headers);
+            ->acceptJson();
     }
 
     public function fake(string $url, PromiseInterface $response): self
