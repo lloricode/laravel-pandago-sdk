@@ -11,5 +11,4 @@ class TimeEstimateDTO extends DataTransferObject
     public float $amount;
     public string $payment_method;
     public string $description;
-
 }
