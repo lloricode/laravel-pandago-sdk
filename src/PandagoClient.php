@@ -73,9 +73,9 @@ class PandagoClient
     public function client(): PendingRequest
     {
         return Http::baseUrl($this->base_url)
-            ->withToken($this->token->access_token)
+            ->withToken($this->token->access_token, $this->token->token_type)
             ->retry(config('pandago-sdk.retry'))
-            ->asJson()
+            ->asForm()
             ->acceptJson();
     }
 
