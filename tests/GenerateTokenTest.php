@@ -14,7 +14,7 @@ it('generate token', function () {
         ->fake(
             Http::response(
                 <<<FAKE
-{"access_token":"$accessToken","expires_in":$expiresInSeconds}
+{"access_token":"$accessToken","expires_in":$expiresInSeconds,"scope":"pandago.api.sg.*","token_type":"bearer"}
 FAKE
             )
         )
