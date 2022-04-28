@@ -12,4 +12,6 @@ return [
     ],
 
 //    'cache_key' => '__pandago_cache_key',
+
+    'retry' => 3,
 ];

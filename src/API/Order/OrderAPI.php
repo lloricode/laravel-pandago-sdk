@@ -4,16 +4,26 @@ namespace Lloricode\LaravelPandagoSdk\API\Order;
 
 use Lloricode\LaravelPandagoSdk\API\BaseAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\CoordinatesDTO;
-use Lloricode\LaravelPandagoSdk\DTO\Order\FeeDTO;
-use Lloricode\LaravelPandagoSdk\DTO\Order\FeeResponseDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateResponseDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderResponseDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderShowResponseDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateResponseDTO;
 
 class OrderAPI extends BaseAPI
 {
     protected const URL = 'sg/api/v1/orders';
 
+    public static function newFake(): FakeOrderAPI
+    {
+        return app(FakeOrderAPI::class);
+    }
+
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
     public function submit(OrderDTO $orderDTO): OrderResponseDTO
     {
         $response = $this->pandagoClient
@@ -25,6 +35,9 @@ class OrderAPI extends BaseAPI
         return new OrderResponseDTO($response->collect()->toArray());
     }
 
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
     public function show(string $orderId): OrderShowResponseDTO
     {
         $response = $this->pandagoClient
@@ -36,6 +49,9 @@ class OrderAPI extends BaseAPI
         return new OrderShowResponseDTO($response->collect()->toArray());
     }
 
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
     public function cancel(string $orderId, string $reason)
     {
         $response = $this->pandagoClient
@@ -47,6 +63,9 @@ class OrderAPI extends BaseAPI
         return $response;
     }
 
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
     public function coordinates(string $orderId): CoordinatesDTO
     {
         $response = $this->pandagoClient
@@ -58,19 +77,31 @@ class OrderAPI extends BaseAPI
         return new CoordinatesDTO($response->collect()->toArray());
     }
 
-    public function feeEstimate(FeeDTO $feeDTO): FeeResponseDTO
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
+    public function feeEstimate(FeeEstimateDTO $feeEstimateDTO): FeeEstimateResponseDTO
     {
         $response = $this->pandagoClient
             ->client()
-            ->post(self::URL.'/fee', $feeDTO->toArray());
+            ->post(self::URL.'/fee', $feeEstimateDTO->toArray());
 
         $response->throw();
 
-        return new FeeResponseDTO($response->collect()->toArray());
+        return new FeeEstimateResponseDTO($response->collect()->toArray());
     }
 
-    public static function newFake(): self
+    /**
+     * @throws \Illuminate\Http\Client\RequestException
+     */
+    public function timeEstimate(TimeEstimateDTO $timeEstimateDTO): TimeEstimateResponseDTO
     {
-        return app(FakeOrderAPI::class);
+        $response = $this->pandagoClient
+            ->client()
+            ->post(self::URL.'/time', $timeEstimateDTO->toArray());
+
+        $response->throw();
+
+        return new TimeEstimateResponseDTO($response->collect()->toArray());
     }
 }

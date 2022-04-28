@@ -51,4 +51,13 @@ class FakeOrderAPI extends OrderAPI
 
         return $this;
     }
+
+    public function fakeTimeEstimate(?PromiseInterface $response = null): self
+    {
+        $response ??= Http::response();
+
+        $this->pandagoClient->fake(self::URL.'/time', $response);
+
+        return $this;
+    }
 }

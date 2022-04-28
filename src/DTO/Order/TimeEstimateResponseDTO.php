@@ -4,8 +4,9 @@ namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
 use Spatie\DataTransferObject\DataTransferObject;
 
-class FeeResponseDTO extends DataTransferObject
+class TimeEstimateResponseDTO extends DataTransferObject
 {
     public string $client_order_id;
-    public float $estimated_delivery_fee;
+    public string $estimated_pickup_time;
+    public string $estimated_delivery_time;
 }

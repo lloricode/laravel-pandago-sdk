@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Http;
 use Lloricode\LaravelPandagoSdk\API\Order\OrderAPI;
-use Lloricode\LaravelPandagoSdk\DTO\Order\FeeDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateDTO;
 
 use function PHPUnit\Framework\assertEquals;
 
@@ -193,7 +194,7 @@ FAKE;
     assertEquals($payloadArray, $dto->toArray());
 });
 
-it('get fee', function () {
+it('get fee estimate', function () {
     $payload = <<<FAKE
 {
   "sender": {
@@ -233,9 +234,55 @@ FAKE;
 FAKE
             )
         )
-        ->feeEstimate(new FeeDTO($payloadArray));
+        ->feeEstimate(new FeeEstimateDTO($payloadArray));
 
     expect($response)
         ->client_order_id->toBe('client-ref-000001')
         ->estimated_delivery_fee->toBe(8.17);
+});
+
+it('get time estimate', function () {
+    $payload = <<<FAKE
+{
+  "sender": {
+    "name": "Pandago",
+    "phone_number": "+6500000000",
+    "location": {
+      "address": "1 2nd Street #08-01",
+      "latitude": 1.2923742,
+      "longitude": 103.8486029
+    },
+    "notes": "use the left side door"
+  },
+  "recipient": {
+    "location": {
+      "address": "20 Esplanade Drive",
+      "latitude": 1.2857488,
+      "longitude": 103.8548608
+    },
+    "notes": "use lift A and leave at the front door"
+  },
+  "amount": 23.5,
+  "payment_method": "PAID",
+  "description": "Refreshing drink"
+}
+FAKE;
+
+    $payloadArray = json_decode($payload, true);
+
+    $payloadResponse = <<<FAKE
+{
+  "client_order_id": "client-ref-000001",
+  "estimated_pickup_time": "2018-09-13T01:30:52.123Z",
+  "estimated_delivery_time": "2018-09-13T01:45:52.123Z"
+}
+FAKE;
+    $payloadResponseArray = json_decode($payloadResponse, true);
+
+    $dto = OrderAPI::newFake()
+        ->fakeTimeEstimate(Http::response($payloadResponse))
+        ->timeEstimate(new TimeEstimateDTO($payloadArray));
+
+
+    assertEquals($payloadResponseArray, $dto->toArray());
 });

@@ -16,6 +16,9 @@ class GenerateTokenAPI
     public const BASE_URL_SANDBOX = 'https://sts-st.deliveryhero.io';
     protected string $baseUrl;
 
+    /**
+     * @throws \ErrorException
+     */
     public function __construct(string $environment = PandagoClient::ENVIRONMENT_SANDBOX)
     {
         switch ($environment) {
@@ -54,6 +57,7 @@ class GenerateTokenAPI
     public function token(): Token
     {
         $response = Http::baseUrl($this->baseUrl)
+            ->retry(config('pandago-sdk.retry'))
             ->asJson()
             ->acceptJson()
             ->post(self::URL, config('pandago-sdk.auth'));
