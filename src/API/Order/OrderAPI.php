@@ -3,10 +3,12 @@
 namespace Lloricode\LaravelPandagoSdk\API\Order;
 
 use Lloricode\LaravelPandagoSdk\API\BaseAPI;
+use Lloricode\LaravelPandagoSdk\DTO\Order\CoordinatesDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeResponseDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderResponseDTO;
+use Lloricode\LaravelPandagoSdk\DTO\Order\OrderShowResponseDTO;
 
 class OrderAPI extends BaseAPI
 {
@@ -23,26 +25,39 @@ class OrderAPI extends BaseAPI
         return new OrderResponseDTO($response->collect()->toArray());
     }
 
-    public function cancel(string $reason)
+
+    public function show(string $orderId): OrderShowResponseDTO
     {
         $response = $this->pandagoClient
             ->client()
-            ->delete(self::URL, ['reason' => $reason]);
+            ->get(self::URL.'/'.$orderId);
+
+        $response->throw();
+
+        return new OrderShowResponseDTO($response->collect()->toArray());
+    }
+
+    public function cancel(string $orderId, string $reason)
+    {
+        $response = $this->pandagoClient
+            ->client()
+            ->delete(self::URL.'/'.$orderId, ['reason' => $reason]);
 
         $response->throw();
 
         return $response;
     }
 
-    public function coordinates()
+
+    public function coordinates(string $orderId): CoordinatesDTO
     {
         $response = $this->pandagoClient
             ->client()
-            ->get(self::URL.'/coordinates');
+            ->get(self::URL.'/'.$orderId.'/coordinates');
 
         $response->throw();
 
-        return $response;
+        return new CoordinatesDTO($response->collect()->toArray());
     }
 
     public function fee(FeeDTO $feeDTO): FeeResponseDTO
@@ -55,4 +70,5 @@ class OrderAPI extends BaseAPI
 
         return new FeeResponseDTO($response->collect()->toArray());
     }
+
 }

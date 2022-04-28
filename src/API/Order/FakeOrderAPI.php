@@ -15,21 +15,29 @@ class FakeOrderAPI extends OrderAPI
 
         return $this;
     }
-
-    public function fakeCancel(?PromiseInterface $response = null): self
+    public function fakeShow(string $orderId, ?PromiseInterface $response = null): self
     {
-        $response ??= Http::response(null, 203);
+        $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL, $response);
+        $this->pandagoClient->fake(self::URL.'/'.$orderId, $response);
 
         return $this;
     }
 
-    public function fakeCoordinates(?PromiseInterface $response = null): self
+    public function fakeCancel(string $orderId,?PromiseInterface $response = null): self
+    {
+        $response ??= Http::response(null, 203);
+
+        $this->pandagoClient->fake(self::URL.'/'.$orderId, $response);
+
+        return $this;
+    }
+
+    public function fakeCoordinates(string $orderId, ?PromiseInterface $response = null): self
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL.'/coordinates', $response);
+        $this->pandagoClient->fake(self::URL.'/'.$orderId.'/coordinates', $response);
 
         return $this;
     }
