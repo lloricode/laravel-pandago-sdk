@@ -46,9 +46,9 @@ class GenerateTokenAPI
         return app(static::class);
     }
 
-    public static function newFake(?PromiseInterface $response = null): FakeGenerateTokenAPI
+    public static function fake(?PromiseInterface $response = null): FakeGenerateTokenAPI
     {
-        return app(FakeGenerateTokenAPI::class)->fake($response);
+        return app(FakeGenerateTokenAPI::class)->fakeGenerate($response);
     }
 
     /**

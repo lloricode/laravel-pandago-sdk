@@ -10,7 +10,8 @@ it('generate token', function () {
     $accessToken = faker()->word;
     $expiresInSeconds = Arr::random(range(1_000, 2_000, 10));
 
-    $token = LaravelPandagoSdk::token()->newFake(
+    $token = LaravelPandagoSdk::token()
+        ->fake(
         Http::response(
             <<<FAKE
 {"access_token":"$accessToken","expires_in":$expiresInSeconds}

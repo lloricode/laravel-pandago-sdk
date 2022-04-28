@@ -9,7 +9,6 @@ use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 use function PHPUnit\Framework\assertEquals;
 
 it('submit', function (array $payload) {
-    ray()->clearAll();
 
     $orderPayload = <<<FAKE
 {
@@ -56,7 +55,8 @@ FAKE;
 
     $arrayPayload = json_decode($orderPayload, true);
 
-    $orderResponse = LaravelPandagoSdk::order()->fake()
+    $orderResponse = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeSubmit(Http::response($arrayPayload))
         ->submit(new OrderDTO($payload));
 
@@ -155,7 +155,8 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $dto = LaravelPandagoSdk::order()->fake()
+    $dto = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeShow('y0ud-000001', Http::response($payloadArray))
         ->show('y0ud-000001');
 
@@ -165,7 +166,8 @@ FAKE;
 it('cancel', function () {
     $payload = '{"message":"reason has been modified to REASON_UNKNOWN"}';
 
-    $response = LaravelPandagoSdk::order()->fake()
+    $response = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeCancel(
             'order-id',
             Http::response($payload, 203)
@@ -224,7 +226,8 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $response = LaravelPandagoSdk::order()->fake()
+    $response = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeFeeEstimate(
             Http::response(
                 <<<FAKE
@@ -280,7 +283,8 @@ FAKE;
 FAKE;
     $payloadResponseArray = json_decode($payloadResponse, true);
 
-    $dto = LaravelPandagoSdk::order()->fake()
+    $dto = LaravelPandagoSdk::order()
+        ->fake()
         ->fakeTimeEstimate(Http::response($payloadResponse))
         ->timeEstimate(new TimeEstimateDTO($payloadArray));
 
