@@ -12,12 +12,12 @@ it('generate token', function () {
 
     $token = LaravelPandagoSdk::token()
         ->fake(
-        Http::response(
+            Http::response(
             <<<FAKE
 {"access_token":"$accessToken","expires_in":$expiresInSeconds}
 FAKE
         )
-    )
+        )
         ->generate();
 
     expect($token)

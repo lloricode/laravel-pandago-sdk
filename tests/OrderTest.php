@@ -9,7 +9,6 @@ use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 use function PHPUnit\Framework\assertEquals;
 
 it('submit', function (array $payload) {
-
     $orderPayload = <<<FAKE
 {
   "order_id": "y0ud-000001",
