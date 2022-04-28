@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
-use Lloricode\LaravelPandagoSdk\API\Order\OrderAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateDTO;
