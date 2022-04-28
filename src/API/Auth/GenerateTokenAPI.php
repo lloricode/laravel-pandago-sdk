@@ -42,6 +42,11 @@ class GenerateTokenAPI
         return app(static::class);
     }
 
+    public static function newFake(): FakeGenerateTokenAPI
+    {
+        return app(FakeGenerateTokenAPI::class);
+    }
+
     /**
      * @throws \Illuminate\Http\Client\RequestException
      */

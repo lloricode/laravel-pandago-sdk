@@ -68,4 +68,9 @@ class OrderAPI extends BaseAPI
 
         return new FeeResponseDTO($response->collect()->toArray());
     }
+
+    public static function newFake(): self
+    {
+        return app(FakeOrderAPI::class);
+    }
 }

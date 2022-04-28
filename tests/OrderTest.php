@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
-use Lloricode\LaravelPandagoSdk\API\Order\FakeOrderAPI;
+use Lloricode\LaravelPandagoSdk\API\Order\OrderAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\OrderDTO;
 
@@ -55,7 +55,7 @@ FAKE;
 
     $arrayPayload = json_decode($orderPayload, true);
 
-    $orderResponse = FakeOrderAPI::new()
+    $orderResponse = OrderAPI::newFake()
         ->fakeSubmit(Http::response($arrayPayload))
         ->submit(new OrderDTO($payload));
 
@@ -154,7 +154,7 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $dto = FakeOrderAPI::new()
+    $dto = OrderAPI::newFake()
         ->fakeShow('y0ud-000001', Http::response($payloadArray))
         ->show('y0ud-000001');
 
@@ -164,7 +164,7 @@ FAKE;
 it('cancel', function () {
     $payload = '{"message":"reason has been modified to REASON_UNKNOWN"}';
 
-    $response = FakeOrderAPI::new()
+    $response = OrderAPI::newFake()
         ->fakeCancel(
             'order-id',
             Http::response($payload, 203)
@@ -186,7 +186,7 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $dto = FakeOrderAPI::new()
+    $dto = OrderAPI::newFake()
         ->fakeCoordinates('client-ref-000001', Http::response($payloadArray))
         ->coordinates('client-ref-000001');
 
@@ -222,7 +222,7 @@ FAKE;
 
     $payloadArray = json_decode($payload, true);
 
-    $response = FakeOrderAPI::new()
+    $response = OrderAPI::newFake()
         ->fakeFeeEstimate(
             Http::response(
                 <<<FAKE

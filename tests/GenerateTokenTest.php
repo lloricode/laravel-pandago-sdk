@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
-use Lloricode\LaravelPandagoSdk\API\Auth\FakeGenerateTokenAPI;
+use Lloricode\LaravelPandagoSdk\API\Auth\GenerateTokenAPI;
 
 use function Pest\Faker\faker;
 
@@ -9,7 +9,7 @@ it('generate token', function () {
     $accessToken = faker()->word;
     $expiresInSeconds = faker()->randomDigitNotZero();
 
-    $token = FakeGenerateTokenAPI::new()
+    $token = GenerateTokenAPI::newFake()
         ->fake(
             Http::response(
                 <<<FAKE
