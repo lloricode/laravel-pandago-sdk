@@ -20,6 +20,7 @@
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/contracts": "^8.75",
         "spatie/data-transfer-object": "^2.8.4",
+        "spatie/laravel-enum": "^3.0",
         "spatie/laravel-package-tools": "^1.11.3"
     },
     "require-dev": {
