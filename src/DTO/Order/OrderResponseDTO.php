@@ -10,7 +10,11 @@ class OrderResponseDTO extends DataTransferObject
     public ?string $client_order_id;
     public SenderDTO $sender;
     public RecipientDTO $recipient;
-    public float $amount;
+    /**
+     * @var float|int
+     */
+    public $amount;
+
     public string $payment_method;
     public bool $coldbag_needed;
     public string $status;

@@ -1,6 +1,9 @@
 <?php
 // config for Lloricode/LaravelPandagoSdk
 return [
+
+    'enabled' => env('PANDAGO_ENABLED', true),
+
     'mode' => env('PANDAGO_MODE', Lloricode\LaravelPandagoSdk\PandagoClient::ENVIRONMENT_SANDBOX),
 
     'auth' => [

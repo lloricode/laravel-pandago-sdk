@@ -4,6 +4,7 @@ namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
 use ErrorException;
 use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Lloricode\LaravelPandagoSdk\DTO\Auth\Token;
 use Lloricode\LaravelPandagoSdk\PandagoClient;
@@ -33,7 +34,7 @@ class GenerateTokenAPI
                 break;
             // @codeCoverageIgnoreEnd
             case PandagoClient::ENVIRONMENT_TESTING:
-                $this->baseUrl = 'http://sample-api.test';
+                $this->baseUrl = 'http://sample-pandaogo-api.test';
 
                 break;
             default:
@@ -62,7 +63,7 @@ class GenerateTokenAPI
                 ->asForm()
                 ->acceptJson()
                 ->post(self::URL, config('pandago-sdk.auth'))
-                ->throw()
+                ->throw(fn(Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );

@@ -9,7 +9,10 @@ class OrderDTO extends DataTransferObject
 {
     public SenderDTO $sender;
     public RecipientDTO $recipient;
-    public float $amount;
+    /**
+     * @var float|int
+     */
+    public $amount;
     public PaymentMethod $payment_method;
     public string $description;
 }

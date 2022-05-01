@@ -7,6 +7,11 @@ use Lloricode\LaravelPandagoSdk\API\Order\OrderAPI;
 
 class LaravelPandagoSdk
 {
+    public static function enabled(): bool
+    {
+        return config('pandago-sdk.enabled');
+    }
+
     public static function token(): GenerateTokenAPI
     {
         return GenerateTokenAPI::new();
