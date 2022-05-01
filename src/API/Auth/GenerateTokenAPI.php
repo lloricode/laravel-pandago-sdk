@@ -63,7 +63,7 @@ class GenerateTokenAPI
                 ->asForm()
                 ->acceptJson()
                 ->post(self::URL, config('pandago-sdk.auth'))
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );

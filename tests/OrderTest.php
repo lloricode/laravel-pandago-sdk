@@ -40,7 +40,7 @@ it('submit', function () {
 }
 FAKE;
 
-    $payloadRequest = ['payment_method' => PaymentMethod::PAID()]+json_decode($payloadRequest, true);
+    $payloadRequest = ['payment_method' => PaymentMethod::PAID()] + json_decode($payloadRequest, true);
 
     $payloadResponse = <<<FAKE
 {
@@ -276,7 +276,7 @@ it('get time estimate', function () {
 }
 FAKE;
 
-    $payloadRequest = ['payment_method' => PaymentMethod::PAID()]+json_decode($payloadRequest, true);
+    $payloadRequest = ['payment_method' => PaymentMethod::PAID()] + json_decode($payloadRequest, true);
 
     $payloadResponse = <<<FAKE
 {

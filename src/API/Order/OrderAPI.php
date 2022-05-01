@@ -2,7 +2,6 @@
 
 namespace Lloricode\LaravelPandagoSdk\API\Order;
 
-use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Lloricode\LaravelPandagoSdk\API\BaseAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\CoordinatesDTO;
@@ -32,7 +31,7 @@ class OrderAPI extends BaseAPI
             $this->pandagoClient
                 ->client()
                 ->post(self::URL, $orderDTO->toArray())
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
@@ -47,7 +46,7 @@ class OrderAPI extends BaseAPI
             $this->pandagoClient
                 ->client()
                 ->get(self::URL.'/'.$orderId)
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
@@ -61,7 +60,7 @@ class OrderAPI extends BaseAPI
         return $this->pandagoClient
             ->client()
             ->delete(self::URL.'/'.$orderId, ['reason' => $reason])
-            ->throw(fn(Response $response) => report($response->body()));
+            ->throw(fn (Response $response) => report($response->body()));
     }
 
     /**
@@ -73,7 +72,7 @@ class OrderAPI extends BaseAPI
             $this->pandagoClient
                 ->client()
                 ->get(self::URL.'/'.$orderId.'/coordinates')
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
@@ -88,7 +87,7 @@ class OrderAPI extends BaseAPI
             $this->pandagoClient
                 ->client()
                 ->post(self::URL.'/fee', $feeEstimateDTO->toArray())
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
@@ -103,7 +102,7 @@ class OrderAPI extends BaseAPI
             $this->pandagoClient
                 ->client()
                 ->post(self::URL.'/time', $timeEstimateDTO->toArray())
-                ->throw(fn(Response $response) => report($response->body()))
+                ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
