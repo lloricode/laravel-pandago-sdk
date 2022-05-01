@@ -170,7 +170,7 @@ it('cancel', function () {
     $payloadResponse = <<<FAKE
 {"message":"$messageResponse"}
 FAKE;
-;
+    ;
     $apiResponse = LaravelPandagoSdk::order()
         ->fake()
         ->fakeCancel(
