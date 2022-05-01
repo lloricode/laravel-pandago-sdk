@@ -7,6 +7,7 @@ use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateDTO;
 use Lloricode\LaravelPandagoSdk\Enum\PaymentMethod;
 use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 
+use function Pest\Faker\faker;
 use function PHPUnit\Framework\assertEquals;
 
 it('submit', function () {
@@ -164,8 +165,12 @@ FAKE;
 });
 
 it('cancel', function () {
-    $payloadResponse = '{"message":"reason has been modified to REASON_UNKNOWN"}';
+    $messageResponse = faker()->word;
 
+    $payloadResponse = <<<FAKE
+{"message":"$messageResponse"}
+FAKE;
+;
     $apiResponse = LaravelPandagoSdk::order()
         ->fake()
         ->fakeCancel(
@@ -174,7 +179,7 @@ it('cancel', function () {
         )
         ->cancel('order-id', 'MISTAKE_ERROR');
 
-    assertEquals($apiResponse->collect()->toJson(), $payloadResponse);
+    assertEquals($messageResponse, $apiResponse);
 });
 
 it('get coordinates', function () {
@@ -290,7 +295,6 @@ FAKE;
         ->fake()
         ->fakeTimeEstimate(Http::response($payloadResponse))
         ->timeEstimate(new TimeEstimateDTO($payloadRequest));
-
 
     assertEquals($payloadResponse, $apiResponse->toArray());
 });

@@ -55,12 +55,13 @@ class OrderAPI extends BaseAPI
     /**
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function cancel(string $orderId, string $reason)
+    public function cancel(string $orderId, string $reason): string
     {
         return $this->pandagoClient
             ->client()
             ->delete(self::URL.'/'.$orderId, ['reason' => $reason])
-            ->throw(fn (Response $response) => report($response->body()));
+            ->throw(fn (Response $response) => report($response->body()))
+            ->collect()['message'];
     }
 
     /**
