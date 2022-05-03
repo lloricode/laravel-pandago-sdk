@@ -17,5 +17,5 @@ class CallBackDTO extends DataTransferObject
     public int $created_at;
     public int $updated_at;
     public ?string $tracking_link;
-    public CancellationDTO $cancellation;
+    public ?CancellationDTO $cancellation;
 }
