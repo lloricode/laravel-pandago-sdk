@@ -12,14 +12,14 @@ class CallBackFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => ['required', new EnumRule(CallBackStatuses::class)]
+            'status' => ['required', new EnumRule(CallBackStatuses::class)],
         ];
     }
 
     public function toDTO(): CallBackDTO
     {
         return new CallBackDTO([
-                'status' => CallBackStatuses::from($this->validated()['status'])
-            ]+$this->all());
+                'status' => CallBackStatuses::from($this->validated()['status']),
+            ] + $this->all());
     }
 }

@@ -3,6 +3,7 @@
 namespace Lloricode\LaravelPandagoSdk\Enum;
 
 use Spatie\Enum\Laravel\Enum;
+
 /**
  * @method static self NEW()
  * @method static self RECEIVED()
@@ -19,5 +20,4 @@ use Spatie\Enum\Laravel\Enum;
  */
 class CallBackStatuses extends Enum
 {
-
 }
