@@ -1,3 +1,9 @@
+services:
+    -
+        class: Spatie\DataTransferObject\PHPstan\PropertiesAreAlwaysInitializedExtension
+        tags:
+            - phpstan.properties.readWriteExtension
+
 includes:
     - phpstan-baseline.neon
 
@@ -10,4 +16,5 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
+    checkUninitializedProperties: true
 

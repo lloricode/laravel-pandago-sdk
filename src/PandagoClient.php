@@ -17,7 +17,7 @@ class PandagoClient
     public const ENVIRONMENT_SANDBOX = 'sandbox';
     public const ENVIRONMENT_PRODUCTION = 'production';
     public const ENVIRONMENT_TESTING = 'testing';
-    public string $mode;
+
     private string $base_url;
     private Token $token;
 
