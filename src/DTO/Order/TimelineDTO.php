@@ -6,6 +6,6 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class TimelineDTO extends DataTransferObject
 {
-    public string $estimated_pickup_time;
-    public string $estimated_delivery_time;
+    public ?string $estimated_pickup_time;
+    public ?string $estimated_delivery_time;
 }
