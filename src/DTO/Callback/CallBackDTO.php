@@ -11,7 +11,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 class CallBackDTO extends DataTransferObject
 {
     public string $order_id;
-    public string $client_order_id;
+    public ?string $client_order_id;
     public CallBackStatuses $status;
     public TimelineDTO $timeline;
     public DriverDTO $driver;
