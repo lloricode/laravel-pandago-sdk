@@ -6,7 +6,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class DriverDTO extends DataTransferObject
 {
-    public string $id;
-    public string $name;
-    public string $phone_number;
+    public ?string $id;
+    public ?string $name;
+    public ?string $phone_number;
 }
