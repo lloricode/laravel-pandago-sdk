@@ -43,6 +43,7 @@ return [
 
 ```php
 # todo:
+# see test suite for sample
 ```
 
 ## Testing
