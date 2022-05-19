@@ -85,7 +85,8 @@ FAKE;
     "phone_number": ""
   },
   "created_at": 1536802000,
-  "updated_at": 1536802000
+  "updated_at": 1536802000,
+  "delivery_tasks" : []
 }
 FAKE;
 
@@ -150,7 +151,8 @@ it('show', function () {
   "cancellation": {
     "reason": "MISTAKE_ERROR",
     "source": "CLIENT"
-  }
+  },
+  "delivery_tasks" : []
 }
 FAKE;
 

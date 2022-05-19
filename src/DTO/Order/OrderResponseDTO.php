@@ -24,4 +24,5 @@ class OrderResponseDTO extends DataTransferObject
     public DriverDTO $driver;
     public int $created_at;
     public int $updated_at;
+    public ?array $delivery_tasks;
 }
