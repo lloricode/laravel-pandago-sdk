@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/contracts": "^8.75",
         "spatie/data-transfer-object": "^2.8.4",
