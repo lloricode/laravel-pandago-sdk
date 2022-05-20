@@ -3,6 +3,7 @@
 namespace Lloricode\LaravelPandagoSdk\API\Order;
 
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Collection;
 use Lloricode\LaravelPandagoSdk\API\BaseAPI;
 use Lloricode\LaravelPandagoSdk\DTO\Order\CoordinatesDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\FeeEstimateDTO;
@@ -53,15 +54,20 @@ class OrderAPI extends BaseAPI
     }
 
     /**
+     * @return string|\Illuminate\Support\Collection
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function cancel(string $orderId, string $reason): string
+    public function cancel(string $orderId, string $reason)
     {
-        return $this->pandagoClient
+        $collection =  $this->pandagoClient
             ->client()
             ->delete(self::URL.'/'.$orderId, ['reason' => $reason])
             ->throw(fn (Response $response) => report($response->body()))
-            ->collect()['message'];
+            ->collect();
+
+        $message = $collection['message'];
+
+        return is_null($message) ? $collection : $message;
     }
 
     /**
