@@ -64,7 +64,7 @@ class OrderAPI extends BaseAPI
             ->throw(fn (Response $response) => report($response->body()))
             ->collect();
 
-        $message = $collection['message'];
+        $message = $collection['message'] ?? null;
 
         return is_null($message) ? $collection : $message;
     }
