@@ -20,4 +20,14 @@ use Spatie\Enum\Laravel\Enum;
  */
 class CallBackStatuses extends Enum
 {
+    public function isCancellable():bool
+    {
+        return $this->equals(
+            self::NEW(),
+            self::RECEIVED(),
+            self::WAITING_FOR_TRANSPORT(),
+            self::ASSIGNED_TO_TRANSPORT(),
+        );
+    }
+
 }
