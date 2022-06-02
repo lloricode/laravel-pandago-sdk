@@ -20,7 +20,7 @@ use Spatie\Enum\Laravel\Enum;
  */
 class CallBackStatuses extends Enum
 {
-    public function isCancellable():bool
+    public function isCancellable(): bool
     {
         return $this->equals(
             self::NEW(),
@@ -29,5 +29,4 @@ class CallBackStatuses extends Enum
             self::ASSIGNED_TO_TRANSPORT(),
         );
     }
-
 }
