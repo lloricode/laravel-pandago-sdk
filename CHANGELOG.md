@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.3.0 - 2022-06-29
+
+- Add country code for order url
+
 ## v1.2.0 - 2022-06-29
 
 - Fix data types

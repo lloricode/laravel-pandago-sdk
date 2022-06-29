@@ -4,6 +4,8 @@ return [
 
     'mode' => env('PANDAGO_MODE', Lloricode\LaravelPandagoSdk\PandagoClient::ENVIRONMENT_SANDBOX),
 
+    'country_code' => env('PANDAGO_COUNTRY_CODE', 'sg'), // must be `sg` when in sandbox mode
+
     'auth' => [
         'grant_type' => 'client_credentials',
         'client_id' => env('PANDAGO_CLIENT_ID'),

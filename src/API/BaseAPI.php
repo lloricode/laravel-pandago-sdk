@@ -8,6 +8,8 @@ abstract class BaseAPI
 {
     protected PandagoClient $pandagoClient;
 
+    abstract protected function url(): string;
+
     public function __construct(PandagoClient $pandagoClient)
     {
         $this->pandagoClient = $pandagoClient;

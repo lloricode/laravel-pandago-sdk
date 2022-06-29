@@ -15,7 +15,10 @@ use Lloricode\LaravelPandagoSdk\DTO\Order\TimeEstimateResponseDTO;
 
 class OrderAPI extends BaseAPI
 {
-    protected const URL = 'sg/api/v1/orders';
+    protected function url(): string
+    {
+        return config('pandago-sdk.country_code').'/api/v1/orders';
+    }
 
     public static function fake(): FakeOrderAPI
     {
@@ -30,7 +33,7 @@ class OrderAPI extends BaseAPI
         return new OrderResponseDTO(
             $this->pandagoClient
                 ->client()
-                ->post(self::URL, $orderDTO->toArray())
+                ->post($this->url(), $orderDTO->toArray())
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
@@ -45,7 +48,7 @@ class OrderAPI extends BaseAPI
         return new OrderShowResponseDTO(
             $this->pandagoClient
                 ->client()
-                ->get(self::URL.'/'.$orderId)
+                ->get($this->url().'/'.$orderId)
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
@@ -60,7 +63,7 @@ class OrderAPI extends BaseAPI
     {
         $collection = $this->pandagoClient
             ->client()
-            ->delete(self::URL.'/'.$orderId, ['reason' => $reason])
+            ->delete($this->url().'/'.$orderId, ['reason' => $reason])
             ->throw(fn (Response $response) => report($response->body()))
             ->collect();
 
@@ -77,7 +80,7 @@ class OrderAPI extends BaseAPI
         return new CoordinatesDTO(
             $this->pandagoClient
                 ->client()
-                ->get(self::URL.'/'.$orderId.'/coordinates')
+                ->get($this->url().'/'.$orderId.'/coordinates')
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
@@ -92,7 +95,7 @@ class OrderAPI extends BaseAPI
         return new FeeEstimateResponseDTO(
             $this->pandagoClient
                 ->client()
-                ->post(self::URL.'/fee', $feeEstimateDTO->toArray())
+                ->post($this->url().'/fee', $feeEstimateDTO->toArray())
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
@@ -107,7 +110,7 @@ class OrderAPI extends BaseAPI
         return new TimeEstimateResponseDTO(
             $this->pandagoClient
                 ->client()
-                ->post(self::URL.'/time', $timeEstimateDTO->toArray())
+                ->post($this->url().'/time', $timeEstimateDTO->toArray())
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()

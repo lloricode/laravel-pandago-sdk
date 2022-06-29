@@ -11,7 +11,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL, $response);
+        $this->pandagoClient->fake($this->url(), $response);
 
         return $this;
     }
@@ -20,7 +20,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL.'/'.$orderId, $response);
+        $this->pandagoClient->fake($this->url().'/'.$orderId, $response);
 
         return $this;
     }
@@ -29,7 +29,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response(null, 203);
 
-        $this->pandagoClient->fake(self::URL.'/'.$orderId, $response);
+        $this->pandagoClient->fake($this->url().'/'.$orderId, $response);
 
         return $this;
     }
@@ -38,7 +38,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL.'/'.$orderId.'/coordinates', $response);
+        $this->pandagoClient->fake($this->url().'/'.$orderId.'/coordinates', $response);
 
         return $this;
     }
@@ -47,7 +47,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL.'/fee', $response);
+        $this->pandagoClient->fake($this->url().'/fee', $response);
 
         return $this;
     }
@@ -56,7 +56,7 @@ class FakeOrderAPI extends OrderAPI
     {
         $response ??= Http::response();
 
-        $this->pandagoClient->fake(self::URL.'/time', $response);
+        $this->pandagoClient->fake($this->url().'/time', $response);
 
         return $this;
     }
