@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.2.0 - 2022-06-29
+
+- Fix data types
+- Add `toDateReadable` in TimeEstimateResponseDTO
+
 ## v1.0.4 - 2022-06-02
 
 - Add check isCancellable()

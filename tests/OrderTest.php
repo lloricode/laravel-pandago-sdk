@@ -233,7 +233,7 @@ it('get fee estimate', function () {
 }
 FAKE;
 
-    $payloadRequest = json_decode($payloadRequest, true);
+    $payloadRequest = ['payment_method' => PaymentMethod::PAID()] + json_decode($payloadRequest, true);
 
     $apiResponse = LaravelPandagoSdk::order()
         ->fake()
