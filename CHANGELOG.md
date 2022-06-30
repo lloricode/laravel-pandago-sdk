@@ -2,9 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
-## unreleased
+## v1.4.0 - 2022-06-30
 
-- Add `isCoordinateAvailable` on status
+- Added `isCoordinateAvailable` on status
+- Changed enum from `CallBackStatuses` to `Status`
 
 ## v1.3.1 - 2022-06-30
 
@@ -12,28 +13,28 @@ All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
 ## v1.3.0 - 2022-06-29
 
-- Add country code for order url
+- Added country code for order url
 
 ## v1.2.0 - 2022-06-29
 
-- Fix data types
-- Add `toDateReadable` in TimeEstimateResponseDTO
+- Fixed data types
+- Added `toDateReadable` in TimeEstimateResponseDTO
 
 ## v1.0.4 - 2022-06-02
 
-- Add check isCancellable()
+- Added check isCancellable()
 
 ## v1.0.3 - 2022-05-20
 
-- Fix missing message in cancel
+- Fixed missing message in cancel
 
 ## v1.0.2 - 2022-05-20
 
-- Fix missing message in cancel
+- Fixed missing message in cancel
 
 ## v1.0.1 - 2022-05-19
 
-- Fix missing response on submit order
+- Fixed missing response on submit order
 
 ## v1.0.0 - 2022-05-19
 

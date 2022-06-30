@@ -18,7 +18,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self DELAYED()
  * @method static self CANCELLED()
  */
-class CallBackStatuses extends Enum
+class Status extends Enum
 {
     public function isCancellable(): bool
     {

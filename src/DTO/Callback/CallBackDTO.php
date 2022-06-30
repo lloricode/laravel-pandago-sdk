@@ -5,14 +5,14 @@ namespace Lloricode\LaravelPandagoSdk\DTO\Callback;
 use Lloricode\LaravelPandagoSdk\DTO\Order\CancellationDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\DriverDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\TimelineDTO;
-use Lloricode\LaravelPandagoSdk\Enum\CallBackStatuses;
+use Lloricode\LaravelPandagoSdk\Enum\Status;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class CallBackDTO extends DataTransferObject
 {
     public string $order_id;
     public ?string $client_order_id;
-    public CallBackStatuses $status;
+    public Status $status;
     public TimelineDTO $timeline;
     public DriverDTO $driver;
     public int $created_at;
