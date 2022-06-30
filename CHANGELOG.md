@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.5.0 - 2022-06-30
+
+- Add generate jwt for `client_assertion` in generate access_token
+
 ## v1.4.1 - 2022-06-30
 
 - Remove `ASSIGNED_TO_TRANSPORT` to cancellable status

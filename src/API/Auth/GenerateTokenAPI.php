@@ -3,6 +3,8 @@
 namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
 use ErrorException;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -62,10 +64,33 @@ class GenerateTokenAPI
                 ->retry(config('pandago-sdk.retry'))
                 ->asForm()
                 ->acceptJson()
-                ->post(self::URL, config('pandago-sdk.auth'))
+                ->post(self::URL, config('pandago-sdk.auth')+[
+                    'client_assertion' => self::generateClientAssertion()
+                    ])
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
                 ->toArray()
         );
+    }
+
+    public static function generateClientAssertion(): string
+    {
+        if (app()->runningUnitTests()) {
+            return 'fake-jwt';
+        }
+
+        $privateKey = file_get_contents(storage_path('pandago-private.key'));
+
+        if ($privateKey === false) {
+            abort('must have generate private key');
+        }
+
+        return JWT::encode([
+            'iss' => config('pandago-sdk.auth.client_id'),
+            'sub' => config('pandago-sdk.auth.client_id'),
+            'jti' => config('pandago-sdk.jwt.jti'),
+            'exp' => config('pandago-sdk.jwt.exp'),
+            'aud' => config('pandago-sdk.jwt.aud'),
+        ], $privateKey, 'RS256', config('pandago-sdk.jwt.key_id'));
     }
 }

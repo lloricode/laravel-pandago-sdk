@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "firebase/php-jwt": "^6.2",
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/contracts": "^8.75",
         "spatie/data-transfer-object": "^2.8.4",

@@ -6,15 +6,19 @@ return [
 
     'country_code' => env('PANDAGO_COUNTRY_CODE', 'sg'), // must be `sg` when in sandbox mode
 
+    'jwt' => [
+        'key_id' => env('PANDAGO_KEY_ID'),
+        'jti' => env('PANDAGO_JTI'),
+        'exp' => env('PANDAGO_EXP'),
+        'aud' => env('PANDAGO_AUD')
+    ],
+
     'auth' => [
         'grant_type' => 'client_credentials',
         'client_id' => env('PANDAGO_CLIENT_ID'),
         'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-        'client_assertion' => env('PANDAGO_CLIENT_ASSERTION'),
         'scope' => env('PANDAGO_SCOPE'),
     ],
-
-//    'cache_key' => '__pandago_cache_key',
 
     'retry' => 3,
 ];
