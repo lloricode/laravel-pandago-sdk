@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
-## unreleased
+## v1.4.1 - 2022-06-30
 
 - Remove `ASSIGNED_TO_TRANSPORT` to cancellable status
 
