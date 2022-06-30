@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## unreleased
+
+- Add `isCoordinateAvailable` on status
+
 ## v1.3.1 - 2022-06-30
 
 - Fixed CoordinatesDTO->client_order_id as nullable

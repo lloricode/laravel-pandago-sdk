@@ -29,4 +29,15 @@ class CallBackStatuses extends Enum
             self::ASSIGNED_TO_TRANSPORT(),
         );
     }
+
+    public function isCoordinateAvailable(): bool
+    {
+        return ! $this->equals(
+            self::NEW(),
+            self::RECEIVED(),
+            self::WAITING_FOR_TRANSPORT(),
+            self::ASSIGNED_TO_TRANSPORT(),
+            self::COURIER_ACCEPTED_DELIVERY(),
+        );
+    }
 }
