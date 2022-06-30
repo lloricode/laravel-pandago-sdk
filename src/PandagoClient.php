@@ -11,9 +11,6 @@ use Lloricode\LaravelPandagoSdk\DTO\Auth\Token;
 
 class PandagoClient
 {
-    public const BASE_URL_PRODUCTION = 'https://sts.deliveryhero.io';
-    public const BASE_URL_SANDBOX = 'https://pandago-api-sandbox.deliveryhero.io';
-
     public const ENVIRONMENT_SANDBOX = 'sandbox';
     public const ENVIRONMENT_PRODUCTION = 'production';
     public const ENVIRONMENT_TESTING = 'testing';
@@ -30,16 +27,16 @@ class PandagoClient
         switch ($environment) {
             // @codeCoverageIgnoreStart
             case self::ENVIRONMENT_PRODUCTION:
-                $this->base_url = self::BASE_URL_PRODUCTION;
+                $this->base_url = config('pandago-sdk.url.base.production');
 
                 break;
             case self::ENVIRONMENT_SANDBOX:
-                $this->base_url = self::BASE_URL_SANDBOX;
+                $this->base_url = config('pandago-sdk.url.base.sandbox');
 
                 break;
             // @codeCoverageIgnoreEnd
             case self::ENVIRONMENT_TESTING:
-                $this->base_url = 'http://sample-pandago-api.test';
+                $this->base_url = 'http://sample-pandago-base-api.test';
 
                 $generateTokenAPI->fake();
 

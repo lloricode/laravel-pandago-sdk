@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.0 - 2022-07-01
+
+- Allow dynamic urls
+
 ## v1.5.0 - 2022-06-30
 
 - Add generate jwt for `client_assertion` in generate access_token

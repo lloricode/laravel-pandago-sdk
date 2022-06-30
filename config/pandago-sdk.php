@@ -2,6 +2,17 @@
 // config for Lloricode/LaravelPandagoSdk
 return [
 
+    'url' => [
+        'auth' => [
+            'production' => env('PANDAGO_URL_AUTH_PRODUCTION', 'https://sts.deliveryhero.io'),
+            'sandbox' => env('PANDAGO_URL_AUTH_SANDBOX', 'https://sts-st.deliveryhero.io'),
+        ],
+        'base' => [
+            'production' => env('PANDAGO_URL_BASE_PRODUCTION', 'https://sts.deliveryhero.io'),
+            'sandbox' => env('PANDAGO_URL_BASE_SANDBOX', 'https://pandago-api-sandbox.deliveryhero.io'),
+        ]
+    ],
+
     'mode' => env('PANDAGO_MODE', Lloricode\LaravelPandagoSdk\PandagoClient::ENVIRONMENT_SANDBOX),
 
     'country_code' => env('PANDAGO_COUNTRY_CODE', 'sg'), // must be `sg` when in sandbox mode

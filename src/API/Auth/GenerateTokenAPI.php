@@ -14,8 +14,8 @@ class GenerateTokenAPI
 {
     protected const URL = 'oauth2/token';
 
-    public const BASE_URL_PRODUCTION = 'https://sts.deliveryhero.io';
-    public const BASE_URL_SANDBOX = 'https://sts-st.deliveryhero.io';
+    private string $environment;
+
     protected string $baseUrl;
 
     /**
@@ -26,21 +26,23 @@ class GenerateTokenAPI
         switch ($environment) {
             // @codeCoverageIgnoreStart
             case PandagoClient::ENVIRONMENT_PRODUCTION:
-                $this->baseUrl = self::BASE_URL_PRODUCTION;
+                $this->baseUrl = config('pandago-sdk.url.auth.production');
 
                 break;
             case PandagoClient::ENVIRONMENT_SANDBOX:
-                $this->baseUrl = self::BASE_URL_SANDBOX;
+                $this->baseUrl = config('pandago-sdk.url.auth.sandbox');
 
                 break;
             // @codeCoverageIgnoreEnd
             case PandagoClient::ENVIRONMENT_TESTING:
-                $this->baseUrl = 'http://sample-pandaogo-api.test';
+                $this->baseUrl = 'http://sample-pandago-auth-api.test';
 
                 break;
             default:
                 throw new ErrorException("Invalid environment `$environment`.");
         }
+
+        $this->environment = $environment;
     }
 
     public static function new(): self
@@ -72,13 +74,19 @@ class GenerateTokenAPI
         );
     }
 
-    public static function generateClientAssertion(): string
+    public function generateClientAssertion(): string
     {
         if (app()->runningUnitTests()) {
             return 'fake-jwt';
         }
 
-        $privateKey = file_get_contents(storage_path('pandago-private.key'));
+        $fileName = 'pandago-private.key';
+
+        if ($this->environment === PandagoClient::ENVIRONMENT_SANDBOX) {
+            $fileName = 'sandbox-pandago-private.key';
+        }
+
+        $privateKey = file_get_contents(storage_path($fileName));
 
         if ($privateKey === false) {
             abort('must have generate private key');
