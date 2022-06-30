@@ -26,7 +26,6 @@ class Status extends Enum
             self::NEW(),
             self::RECEIVED(),
             self::WAITING_FOR_TRANSPORT(),
-            self::ASSIGNED_TO_TRANSPORT(),
         );
     }
 

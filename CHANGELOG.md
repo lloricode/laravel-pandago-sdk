@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## unreleased
+
+- Remove `ASSIGNED_TO_TRANSPORT` to cancellable status
+
 ## v1.4.0 - 2022-06-30
 
 - Added `isCoordinateAvailable` on status
