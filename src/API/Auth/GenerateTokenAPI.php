@@ -4,7 +4,6 @@ namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
 use ErrorException;
 use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -64,8 +63,8 @@ class GenerateTokenAPI
                 ->retry(config('pandago-sdk.retry'))
                 ->asForm()
                 ->acceptJson()
-                ->post(self::URL, config('pandago-sdk.auth')+[
-                    'client_assertion' => self::generateClientAssertion()
+                ->post(self::URL, config('pandago-sdk.auth') + [
+                    'client_assertion' => self::generateClientAssertion(),
                     ])
                 ->throw(fn (Response $response) => report($response->body()))
                 ->collect()
