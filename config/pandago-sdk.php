@@ -1,7 +1,6 @@
 <?php
 // config for Lloricode/LaravelPandagoSdk
 return [
-
     'url' => [
         'auth' => [
             'production' => env('PANDAGO_URL_AUTH_PRODUCTION', 'https://sts.deliveryhero.io'),
