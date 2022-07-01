@@ -10,7 +10,6 @@ use Lloricode\LaravelPandagoSdk\Enum\Status;
 
 class CallBackDTO extends BaseDTO
 {
-
 //    public $delivery_tasks // missing on production
 
     public string $order_id;
