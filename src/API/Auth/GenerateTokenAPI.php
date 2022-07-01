@@ -98,6 +98,6 @@ class GenerateTokenAPI
             'jti' => config('pandago-sdk.jwt.jti'),
             'exp' => config('pandago-sdk.jwt.exp'),
             'aud' => config('pandago-sdk.jwt.aud'),
-        ], $privateKey, 'RS256',(string) config('pandago-sdk.jwt.key_id'));
+        ], $privateKey, 'RS256', (string) config('pandago-sdk.jwt.key_id'));
     }
 }
