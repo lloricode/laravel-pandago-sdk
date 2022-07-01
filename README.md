@@ -43,9 +43,9 @@ return [
     'country_code' => env('PANDAGO_COUNTRY_CODE', 'sg'), // must be `sg` when in sandbox mode
 
     'jwt' => [
+        'expire_in_minutes' => env('PANDAGO_EXPIRE_IN_MINUTES', 5),
         'key_id' => env('PANDAGO_KEY_ID'),
         'jti' => env('PANDAGO_JTI'),
-        'exp' => env('PANDAGO_EXP'),
         'aud' => env('PANDAGO_AUD')
     ],
 

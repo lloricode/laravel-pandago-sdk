@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.2 - 2022-07-01
+
+- Always generate timestamp for exp
+
 ## v1.6.1 - 2022-07-01
 
 - Ignore all missing in DTO

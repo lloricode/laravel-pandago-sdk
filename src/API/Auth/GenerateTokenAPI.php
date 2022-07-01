@@ -96,7 +96,7 @@ class GenerateTokenAPI
             'iss' => config('pandago-sdk.auth.client_id'),
             'sub' => config('pandago-sdk.auth.client_id'),
             'jti' => config('pandago-sdk.jwt.jti'),
-            'exp' => config('pandago-sdk.jwt.exp'),
+            'exp' => now()->addMinutes((int)config('pandago-sdk.jwt.expire_in_minutes'))->timestamp,
             'aud' => config('pandago-sdk.jwt.aud'),
         ], $privateKey, 'RS256', (string) config('pandago-sdk.jwt.key_id'));
     }
