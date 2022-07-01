@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.3 - 2022-07-01
+
+- Set default 1 minute expiration
+
 ## v1.6.2 - 2022-07-01
 
 - Always generate timestamp for exp
