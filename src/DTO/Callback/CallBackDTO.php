@@ -10,6 +10,8 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class CallBackDTO extends DataTransferObject
 {
+    protected bool $ignoreMissing = true;
+
     public string $order_id;
     public ?string $client_order_id;
     public Status $status;

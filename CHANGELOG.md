@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## unreleased
+
+- Ignore missing on callback dto
+
 ## v1.6.0 - 2022-07-01
 
 - Allow dynamic urls
