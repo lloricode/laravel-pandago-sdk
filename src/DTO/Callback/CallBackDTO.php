@@ -12,6 +12,8 @@ class CallBackDTO extends DataTransferObject
 {
     protected bool $ignoreMissing = true;
 
+//    public $delivery_tasks // missing on production
+
     public string $order_id;
     public ?string $client_order_id;
     public Status $status;
