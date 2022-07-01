@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 
-class TimeEstimateResponseDTO extends DataTransferObject
+class TimeEstimateResponseDTO extends BaseDTO
 {
 //    public ?string $client_order_id;
     public string $estimated_pickup_time;

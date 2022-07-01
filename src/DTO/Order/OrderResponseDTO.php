@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 
-class OrderResponseDTO extends DataTransferObject
+class OrderResponseDTO extends BaseDTO
 {
     public string $order_id;
     public ?string $client_order_id;

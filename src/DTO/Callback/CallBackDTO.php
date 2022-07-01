@@ -2,15 +2,14 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Callback;
 
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\CancellationDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\DriverDTO;
 use Lloricode\LaravelPandagoSdk\DTO\Order\TimelineDTO;
 use Lloricode\LaravelPandagoSdk\Enum\Status;
-use Spatie\DataTransferObject\DataTransferObject;
 
-class CallBackDTO extends DataTransferObject
+class CallBackDTO extends BaseDTO
 {
-    protected bool $ignoreMissing = true;
 
 //    public $delivery_tasks // missing on production
 

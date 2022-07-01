@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 
-class RecipientFeeDTO extends DataTransferObject
+class RecipientFeeDTO extends BaseDTO
 {
     public string $name;
     public string $phone_number;

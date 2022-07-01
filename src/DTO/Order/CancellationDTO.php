@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 
-class CancellationDTO extends DataTransferObject
+class CancellationDTO extends BaseDTO
 {
     public string $reason;
     public string $source;

@@ -2,9 +2,9 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 
-class FeeEstimateResponseDTO extends DataTransferObject
+class FeeEstimateResponseDTO extends BaseDTO
 {
     public ?string $client_order_id;
     /** @var int|float */

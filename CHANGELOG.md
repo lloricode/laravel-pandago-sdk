@@ -4,7 +4,7 @@ All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
 ## unreleased
 
-- Ignore missing on callback dto
+- Ignore all missing in DTO
 
 ## v1.6.0 - 2022-07-01
 

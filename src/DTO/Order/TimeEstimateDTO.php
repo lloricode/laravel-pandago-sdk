@@ -2,10 +2,10 @@
 
 namespace Lloricode\LaravelPandagoSdk\DTO\Order;
 
+use Lloricode\LaravelPandagoSdk\DTO\BaseDTO;
 use Lloricode\LaravelPandagoSdk\Enum\PaymentMethod;
-use Spatie\DataTransferObject\DataTransferObject;
 
-class TimeEstimateDTO extends DataTransferObject
+class TimeEstimateDTO extends BaseDTO
 {
     public SenderDTO $sender;
     public RecipientFeeDTO $recipient;
