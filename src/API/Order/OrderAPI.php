@@ -56,20 +56,15 @@ class OrderAPI extends BaseAPI
     }
 
     /**
-     * @return string|\Illuminate\Support\Collection
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function cancel(string $orderId, string $reason)
+    public function cancel(string $orderId, string $reason): string
     {
-        $collection = $this->pandagoClient
+        return (string) $this->pandagoClient
             ->client()
             ->delete($this->url().'/'.$orderId, ['reason' => $reason])
             ->throw(fn (Response $response) => report($response->body()))
-            ->collect();
-
-        $message = $collection['message'] ?? null;
-
-        return is_null($message) ? $collection : $message;
+            ->collect()['message'];
     }
 
     /**

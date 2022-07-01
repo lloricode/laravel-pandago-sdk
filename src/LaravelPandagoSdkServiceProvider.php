@@ -20,7 +20,7 @@ class LaravelPandagoSdkServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $mode = config('pandago-sdk.mode');
+        $mode = (string) config('pandago-sdk.mode');
 
         $this->app->singleton(
             GenerateTokenAPI::class,

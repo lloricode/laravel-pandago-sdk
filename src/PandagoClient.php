@@ -27,11 +27,11 @@ class PandagoClient
         switch ($environment) {
             // @codeCoverageIgnoreStart
             case self::ENVIRONMENT_PRODUCTION:
-                $this->base_url = config('pandago-sdk.url.base.production');
+                $this->base_url = (string) config('pandago-sdk.url.base.production');
 
                 break;
             case self::ENVIRONMENT_SANDBOX:
-                $this->base_url = config('pandago-sdk.url.base.sandbox');
+                $this->base_url = (string) config('pandago-sdk.url.base.sandbox');
 
                 break;
             // @codeCoverageIgnoreEnd
@@ -71,7 +71,7 @@ class PandagoClient
     {
         return Http::baseUrl($this->base_url)
             ->withToken($this->token->access_token, $this->token->token_type)
-            ->retry(config('pandago-sdk.retry'))
+            ->retry((int) config('pandago-sdk.retry'))
             ->asJson()
             ->acceptJson();
     }
