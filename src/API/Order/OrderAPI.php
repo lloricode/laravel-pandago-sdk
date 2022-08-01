@@ -60,11 +60,18 @@ class OrderAPI extends BaseAPI
      */
     public function cancel(string $orderId, string $reason): string
     {
-        return (string) $this->pandagoClient
+         $response = $this->pandagoClient
             ->client()
             ->delete($this->url().'/'.$orderId, ['reason' => $reason])
-            ->throw(fn (Response $response) => report($response->body()))
-            ->collect()['message'];
+            ->throw(fn (Response $response) => report($response->body()));
+
+         $responseCollection = $response->collect();
+
+        if ($responseCollection->isEmpty() && $response->status() === 204) {
+            return __('Successful cancelled.');
+        }
+
+        return $responseCollection['message'];
     }
 
     /**

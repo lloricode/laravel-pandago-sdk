@@ -166,23 +166,32 @@ FAKE;
     assertEquals($payloadResponse, $apiResponse->toArray());
 });
 
-it('cancel', function () {
+it('cancel', function (bool $hasReturn) {
     $messageResponse = faker()->word;
 
-    $payloadResponse = <<<FAKE
+    if ($hasReturn) {
+        $payloadResponse = <<<FAKE
 {"message":"$messageResponse"}
 FAKE;
-    ;
+    } else{
+        $payloadResponse = null;
+        $messageResponse =  'Successful cancelled.';
+    }
+
     $apiResponse = LaravelPandagoSdk::order()
         ->fake()
         ->fakeCancel(
             'order-id',
-            Http::response($payloadResponse, 203)
+            Http::response($payloadResponse, 204) // actual on sandbox
         )
         ->cancel('order-id', 'MISTAKE_ERROR');
 
     assertEquals($messageResponse, $apiResponse);
-});
+})
+    ->with([
+        'w/ return' => true,
+        'w/out return' => false,
+    ]);
 
 it('get coordinates', function () {
     $payloadResponse = <<<FAKE
