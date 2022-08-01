@@ -68,7 +68,7 @@ class OrderAPI extends BaseAPI
         $responseCollection = $response->collect();
 
         if ($responseCollection->isEmpty() && $response->status() === 204) {
-            return __('Successful cancelled.');
+            return (string) __('Successful cancelled.');
         }
 
         return $responseCollection['message'];
