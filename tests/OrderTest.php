@@ -173,9 +173,9 @@ it('cancel', function (bool $hasReturn) {
         $payloadResponse = <<<FAKE
 {"message":"$messageResponse"}
 FAKE;
-    } else{
+    } else {
         $payloadResponse = null;
-        $messageResponse =  'Successful cancelled.';
+        $messageResponse = 'Successful cancelled.';
     }
 
     $apiResponse = LaravelPandagoSdk::order()

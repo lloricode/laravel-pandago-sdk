@@ -33,7 +33,7 @@ class GenerateTokenAPI
                 $this->baseUrl = (string) config('pandago-sdk.url.auth.sandbox');
 
                 break;
-            // @codeCoverageIgnoreEnd
+                // @codeCoverageIgnoreEnd
             case PandagoClient::ENVIRONMENT_TESTING:
                 $this->baseUrl = 'http://sample-pandago-auth-api.test';
 

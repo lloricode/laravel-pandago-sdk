@@ -34,7 +34,7 @@ class PandagoClient
                 $this->base_url = (string) config('pandago-sdk.url.base.sandbox');
 
                 break;
-            // @codeCoverageIgnoreEnd
+                // @codeCoverageIgnoreEnd
             case self::ENVIRONMENT_TESTING:
                 $this->base_url = 'http://sample-pandago-base-api.test';
 
