@@ -1,9 +1,6 @@
 # laravel-pandago-sdk
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/lloricode/laravel-pandago-sdk.svg?style=flat-square)](https://packagist.org/packages/lloricode/laravel-pandago-sdk)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lloricode/laravel-pandago-sdk/run-tests?label=tests)](https://github.com/lloricode/laravel-pandago-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lloricode/laravel-pandago-sdk/Check%20&%20fix%20styling?label=code%20style)](https://github.com/lloricode/laravel-pandago-sdk/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/lloricode/laravel-pandago-sdk.svg?style=flat-square)](https://packagist.org/packages/lloricode/laravel-pandago-sdk)
+[![Latest Stable Version](http://poser.pugx.org/lloricode/laravel-pandago-sdk/v)](https://packagist.org/packages/lloricode/laravel-pandago-sdk) [![Total Downloads](http://poser.pugx.org/lloricode/laravel-pandago-sdk/downloads)](https://packagist.org/packages/lloricode/laravel-pandago-sdk) [![Latest Unstable Version](http://poser.pugx.org/lloricode/laravel-pandago-sdk/v/unstable)](https://packagist.org/packages/lloricode/laravel-pandago-sdk) [![License](http://poser.pugx.org/lloricode/laravel-pandago-sdk/license)](https://packagist.org/packages/lloricode/laravel-pandago-sdk) [![PHP Version Require](http://poser.pugx.org/lloricode/laravel-pandago-sdk/require/php)](https://packagist.org/packages/lloricode/laravel-pandago-sdk)
 
 https://pandago.docs.apiary.io
 
