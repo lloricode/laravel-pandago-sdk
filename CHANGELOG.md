@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.5 - 2022-08-12
+
+- Fix production base url
+
 ## v1.6.4 - 2022-08-01
 
 - Fix cancel when api return null.

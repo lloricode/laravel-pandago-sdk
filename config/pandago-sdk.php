@@ -7,7 +7,7 @@ return [
             'sandbox' => env('PANDAGO_URL_AUTH_SANDBOX', 'https://sts-st.deliveryhero.io'),
         ],
         'base' => [
-            'production' => env('PANDAGO_URL_BASE_PRODUCTION', 'https://sts.deliveryhero.io'),
+            'production' => env('PANDAGO_URL_BASE_PRODUCTION', 'https://pandago-api-apse.deliveryhero.io'),
             'sandbox' => env('PANDAGO_URL_BASE_SANDBOX', 'https://pandago-api-sandbox.deliveryhero.io'),
         ]
     ],
