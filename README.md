@@ -23,7 +23,6 @@ This is the contents of the published config file:
 ```php
 <?php
 // config for Lloricode/LaravelPandagoSdk
-use Illuminate\Support\Str;
 
 return [
     'url' => [
@@ -44,7 +43,7 @@ return [
     'jwt' => [
         'expire_in_minutes' => env('PANDAGO_JWT_EXPIRE_IN_MINUTES', 1),
         'key_id' => env('PANDAGO_JWT_KEY_ID'),
-        'jti' => env('PANDAGO_JWT_JTI', (string) Str::uuid()),
+        'jti' => env('PANDAGO_JWT_JTI'),
         'aud' => env('PANDAGO_JWT_AUD')
     ],
 
