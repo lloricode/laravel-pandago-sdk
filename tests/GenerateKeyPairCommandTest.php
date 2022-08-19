@@ -7,12 +7,10 @@ use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 use Lloricode\LaravelPandagoSdk\PandagoClient;
 
 use function Pest\Laravel\artisan;
-use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFileDoesNotExist;
 use function PHPUnit\Framework\assertFileExists;
 
 it('generate key pair', function () {
-
     config([
         'pandago-sdk.mode' => PandagoClient::ENVIRONMENT_SANDBOX,
         'pandago-sdk.key_pair_path' => base_path(),
