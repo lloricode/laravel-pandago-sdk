@@ -10,7 +10,7 @@ use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 use function Pest\Faker\faker;
 use function PHPUnit\Framework\assertEquals;
 
-beforeEach(fn() => LaravelPandagoSdk::token()->fake()->fakeGenerate());
+beforeEach(fn () => LaravelPandagoSdk::token()->fake()->fakeGenerate());
 
 it('submit', function () {
     $payloadRequest = <<<FAKE

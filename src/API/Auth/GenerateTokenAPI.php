@@ -4,7 +4,6 @@ namespace Lloricode\LaravelPandagoSdk\API\Auth;
 
 use ErrorException;
 use Firebase\JWT\JWT;
-use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -115,12 +114,12 @@ class GenerateTokenAPI
         File::delete($this->privateKeyFileName());
     }
 
-    public  function publicKeyFileName(bool $checkIfExist = true): string
+    public function publicKeyFileName(bool $checkIfExist = true): string
     {
         return $this->getFileNameDirectory(false, $checkIfExist);
     }
 
-    public  function privateKeyFileName(bool $checkIfExist = true): string
+    public function privateKeyFileName(bool $checkIfExist = true): string
     {
         return $this->getFileNameDirectory(true, $checkIfExist);
     }
@@ -136,7 +135,7 @@ class GenerateTokenAPI
 
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             return false;
         }
 
@@ -148,5 +147,4 @@ class GenerateTokenAPI
 
         return $process->isSuccessful();
     }
-
 }

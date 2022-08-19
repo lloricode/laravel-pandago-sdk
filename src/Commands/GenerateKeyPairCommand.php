@@ -17,6 +17,6 @@ class GenerateKeyPairCommand extends Command
 
         $this->comment('All done');
 
-        return $success?self::SUCCESS:self::FAILURE;
+        return $success ? self::SUCCESS : self::FAILURE;
     }
 }
