@@ -44,7 +44,7 @@ return [
     'jwt' => [
         'expire_in_minutes' => env('PANDAGO_JWT_EXPIRE_IN_MINUTES', 1),
         'key_id' => env('PANDAGO_JWT_KEY_ID'),
-        'jti' => env('PANDAGO_JWT_JTI', Str::uuid()),
+        'jti' => env('PANDAGO_JWT_JTI', (string) Str::uuid()),
         'aud' => env('PANDAGO_JWT_AUD')
     ],
 
@@ -54,7 +54,7 @@ return [
         'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
         'scope' => env('PANDAGO_SCOPE'),
     ],
-    
+
     'key_pair_path' => env('PANDAGO_KEY_PAIR_PATH', storage_path()),
 
     'retry' => 3,

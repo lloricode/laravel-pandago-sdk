@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
-## v1.6.8 - 2022-08-19
+## v1.6.8 - v1.6.9 - 2022-08-19
 
 - Fix caching config
 
