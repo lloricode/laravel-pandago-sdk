@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.8 - 2022-08-19
+
+- Fix caching config
+
 ## v1.6.7 - 2022-08-19
 
 - Add new command to generate key pair.
