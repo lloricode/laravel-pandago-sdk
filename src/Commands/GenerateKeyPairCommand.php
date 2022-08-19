@@ -22,8 +22,7 @@ class GenerateKeyPairCommand extends Command
             $this->info('Generated: ' . LaravelPandagoSdk::token()->publicKeyFileName());
 
             $this->info('Key pair saved!');
-        }
-        else {
+        } else {
             $this->error('Failed to generate key pair.');
         }
 
