@@ -40,6 +40,12 @@
         <server name="PANDAGO_MODE" value="testing"/>
 <!--        <server name="PANDAGO_MODE" value="sandbox"/>-->
 
+        <server name="PANDAGO_URL_AUTH_PRODUCTION" value="http://prod-auth"/>
+        <server name="PANDAGO_URL_AUTH_SANDBOX" value="http://sandbox-auth"/>
+
+        <server name="PANDAGO_URL_BASE_PRODUCTION" value="http://prod-base"/>
+        <server name="PANDAGO_URL_BASE_SANDBOX" value="http://sandbox-base"/>
+
         <env name="RAY_ENABLED" value="true"/>
         <env name="SEND_CACHE_TO_RAY" value="false"/>
         <env name="SEND_DUMPS_TO_RAY" value="true"/>

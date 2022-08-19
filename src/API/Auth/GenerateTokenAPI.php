@@ -113,8 +113,16 @@ class GenerateTokenAPI
 
     public function deleteKeyPair(): void
     {
-        File::delete($this->publicKeyFileName());
-        File::delete($this->privateKeyFileName());
+        foreach (
+            [
+            $this->publicKeyFileName(false),
+                     $this->privateKeyFileName(false),
+                 ] as $file
+        ) {
+            if (File::exists($file)) {
+                File::delete($file);
+            }
+        }
     }
 
     public function publicKeyFileName(bool $checkIfExist = true): string
