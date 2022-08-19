@@ -82,6 +82,7 @@ class GenerateTokenAPI
 
     public function generateClientAssertion(): string
     {
+        /** @var string $privateKey */
         $privateKey = file_get_contents($this->privateKeyFileName());
 
         return JWT::encode([
