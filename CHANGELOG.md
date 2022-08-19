@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
+## v1.6.7 - 2022-08-19
+
+- Add new command to generate key pair.
+- Optimise test for generating key pair.
+
 ## v1.6.6 - 2022-08-19
 
 - Use random uuid in jti.

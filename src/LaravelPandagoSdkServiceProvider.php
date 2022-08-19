@@ -4,7 +4,7 @@ namespace Lloricode\LaravelPandagoSdk;
 
 use Lloricode\LaravelPandagoSdk\API\Auth\FakeGenerateTokenAPI;
 use Lloricode\LaravelPandagoSdk\API\Auth\GenerateTokenAPI;
-use Lloricode\LaravelPandagoSdk\Commands\LaravelPandagoSdkCommand;
+use Lloricode\LaravelPandagoSdk\Commands\GenerateKeyPairCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -15,28 +15,25 @@ class LaravelPandagoSdkServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-pandago-sdk')
             ->hasConfigFile()
-            ->hasCommand(LaravelPandagoSdkCommand::class);
+            ->hasCommand(GenerateKeyPairCommand::class);
     }
 
     public function packageRegistered(): void
     {
         $mode = (string) config('pandago-sdk.mode');
 
+        $generateTokeApi = $mode === PandagoClient::ENVIRONMENT_TESTING
+            ? FakeGenerateTokenAPI::class
+            : GenerateTokenAPI::class;
+
         $this->app->singleton(
-            GenerateTokenAPI::class,
-            fn () => new GenerateTokenAPI($mode)
+            $generateTokeApi,
+            fn () => new $generateTokeApi($mode)
         );
 
         $this->app->singleton(
             PandagoClient::class,
-            fn () => new PandagoClient(
-                app(
-                    $mode === PandagoClient::ENVIRONMENT_TESTING
-                        ? FakeGenerateTokenAPI::class
-                        : GenerateTokenAPI::class
-                ),
-                $mode
-            )
+            fn () => new PandagoClient(app($generateTokeApi), $mode)
         );
     }
 }

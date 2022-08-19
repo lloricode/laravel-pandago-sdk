@@ -5,7 +5,7 @@ namespace Lloricode\LaravelPandagoSdk\API\Auth;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Facades\Http;
 
-class FakeGenerateTokenAPI extends GenerateTokenAPI
+final class FakeGenerateTokenAPI extends GenerateTokenAPI
 {
     public function fakeGenerate(?PromiseInterface $response = null): self
     {

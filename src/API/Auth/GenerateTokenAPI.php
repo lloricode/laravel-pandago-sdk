@@ -6,18 +6,24 @@ use ErrorException;
 use Firebase\JWT\JWT;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Lloricode\LaravelPandagoSdk\DTO\Auth\Token;
 use Lloricode\LaravelPandagoSdk\PandagoClient;
+use Symfony\Component\Process\Process;
 
 class GenerateTokenAPI
 {
     protected const URL = 'oauth2/token';
 
-    private string $environment;
+    protected string $environment;
 
     protected string $baseUrl;
+
+    public const PRIVATE_KEY = 'pandago-private.key';
+
+    public const PUBLIC_KEY = 'pandago-public.key';
 
     /**
      * @throws \ErrorException
@@ -51,9 +57,9 @@ class GenerateTokenAPI
         return app(static::class);
     }
 
-    public static function fake(?PromiseInterface $response = null): FakeGenerateTokenAPI
+    public static function fake(): FakeGenerateTokenAPI
     {
-        return app(FakeGenerateTokenAPI::class)->fakeGenerate($response);
+        return app(FakeGenerateTokenAPI::class);
     }
 
     /**
@@ -77,21 +83,7 @@ class GenerateTokenAPI
 
     public function generateClientAssertion(): string
     {
-        if (app()->runningUnitTests()) {
-            return 'fake-jwt';
-        }
-
-        $fileName = 'pandago-private.key';
-
-        if ($this->environment === PandagoClient::ENVIRONMENT_SANDBOX) {
-            $fileName = 'sandbox-pandago-private.key';
-        }
-
-        $privateKey = file_get_contents(storage_path($fileName));
-
-        if ($privateKey === false) {
-            abort(500, 'must have generate private key');
-        }
+        $privateKey = file_get_contents($this->privateKeyFileName());
 
         return JWT::encode([
             'iss' => config('pandago-sdk.auth.client_id'),
@@ -101,4 +93,60 @@ class GenerateTokenAPI
             'aud' => config('pandago-sdk.jwt.aud'),
         ], $privateKey, 'RS256', (string) config('pandago-sdk.jwt.key_id'));
     }
+
+    private function getFileNameDirectory(bool $private, bool $checkIfExist = true): string
+    {
+        $fileName = $private ? self::PRIVATE_KEY : self::PUBLIC_KEY;
+
+        if ($this->environment !== PandagoClient::ENVIRONMENT_PRODUCTION) {
+            $fileName = $this->environment.'-'.$fileName;
+        }
+
+        if ($checkIfExist && ! File::exists(storage_path($fileName))) {
+            abort(400, "$fileName not exist.");
+        }
+
+        return storage_path($fileName);
+    }
+
+    public function deleteKeyPair(): void
+    {
+        File::delete($this->publicKeyFileName());
+        File::delete($this->privateKeyFileName());
+    }
+
+    public  function publicKeyFileName(bool $checkIfExist = true): string
+    {
+        return $this->getFileNameDirectory(false, $checkIfExist);
+    }
+
+    public  function privateKeyFileName(bool $checkIfExist = true): string
+    {
+        return $this->getFileNameDirectory(true, $checkIfExist);
+    }
+
+    public function generateKeyPair(): bool
+    {
+        $privateKeyFile = $this->privateKeyFileName(false);
+        $publicKeyFile = $this->publicKeyFileName(false);
+
+        $process = Process::fromShellCommandline(
+            "openssl genrsa -out $privateKeyFile 2048"
+        );
+
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            return false;
+        }
+
+        $process = Process::fromShellCommandline(
+            "openssl rsa -in $privateKeyFile -pubout > $publicKeyFile"
+        );
+
+        $process->run();
+
+        return $process->isSuccessful();
+    }
+
 }

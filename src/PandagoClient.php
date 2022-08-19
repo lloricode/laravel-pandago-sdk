@@ -38,7 +38,7 @@ class PandagoClient
             case self::ENVIRONMENT_TESTING:
                 $this->base_url = 'http://sample-pandago-base-api.test';
 
-                $generateTokenAPI->fake();
+//                $generateTokenAPI->fake();
 
                 break;
             default:
