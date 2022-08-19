@@ -101,11 +101,13 @@ class GenerateTokenAPI
             $fileName = $this->environment.'-'.$fileName;
         }
 
-        if ($checkIfExist && ! File::exists(storage_path($fileName))) {
-            abort(400, "$fileName not exist.");
+        $fullPathFile = config('pandago-sdk.key_pair_path').DIRECTORY_SEPARATOR.$fileName;
+
+        if ($checkIfExist && ! File::exists($fullPathFile)) {
+            abort(400, "$fullPathFile not exist.");
         }
 
-        return storage_path($fileName);
+        return $fullPathFile;
     }
 
     public function deleteKeyPair(): void

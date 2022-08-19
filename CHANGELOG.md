@@ -6,6 +6,7 @@ All notable changes to `laravel-pandago-sdk` will be documented in this file.
 
 - Add new command to generate key pair.
 - Optimise test for generating key pair.
+- Add dynamic key pair path.
 
 ## v1.6.6 - 2022-08-19
 

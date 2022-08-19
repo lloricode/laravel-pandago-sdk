@@ -32,5 +32,7 @@ return [
         'scope' => env('PANDAGO_SCOPE'),
     ],
 
+    'key_pair_path' => env('PANDAGO_KEY_PAIR_PATH', storage_path()),
+
     'retry' => 3,
 ];
