@@ -25,6 +25,10 @@ it('generate key pair', function () {
     assertFileDoesNotExist($publicKey);
 
     artisan(GenerateKeyPairCommand::class)
+        ->expectsOutput('Generating key pairs....')
+        ->expectsOutput('Generated: '.$privateKey)
+        ->expectsOutput('Generated: '.$publicKey)
+        ->expectsOutput('Key pair saved!')
         ->assertSuccessful();
 
     assertFileExists($privateKey);

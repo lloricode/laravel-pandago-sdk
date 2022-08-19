@@ -15,7 +15,12 @@ class GenerateKeyPairCommand extends Command
     {
         $success = LaravelPandagoSdk::token()->generateKeyPair();
 
-        $this->comment('All done');
+        $this->comment('Generating key pairs....');
+
+        $this->info('Generated: '.LaravelPandagoSdk::token()->privateKeyFileName());
+        $this->info('Generated: '.LaravelPandagoSdk::token()->publicKeyFileName());
+
+        $this->info('Key pair saved!');
 
         return $success ? self::SUCCESS : self::FAILURE;
     }
