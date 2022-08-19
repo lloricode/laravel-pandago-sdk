@@ -22,6 +22,8 @@ This is the contents of the published config file:
 
 ```php
 <?php
+// config for Lloricode/LaravelPandagoSdk
+use Illuminate\Support\Str;
 
 return [
     'url' => [
@@ -30,7 +32,7 @@ return [
             'sandbox' => env('PANDAGO_URL_AUTH_SANDBOX', 'https://sts-st.deliveryhero.io'),
         ],
         'base' => [
-            'production' => env('PANDAGO_URL_BASE_PRODUCTION', 'https://sts.deliveryhero.io'),
+            'production' => env('PANDAGO_URL_BASE_PRODUCTION', 'https://pandago-api-apse.deliveryhero.io'),
             'sandbox' => env('PANDAGO_URL_BASE_SANDBOX', 'https://pandago-api-sandbox.deliveryhero.io'),
         ]
     ],
@@ -42,7 +44,7 @@ return [
     'jwt' => [
         'expire_in_minutes' => env('PANDAGO_JWT_EXPIRE_IN_MINUTES', 1),
         'key_id' => env('PANDAGO_JWT_KEY_ID'),
-        'jti' => env('PANDAGO_JWT_JTI'),
+        'jti' => env('PANDAGO_JWT_JTI', Str::uuid()),
         'aud' => env('PANDAGO_JWT_AUD')
     ],
 
@@ -55,6 +57,7 @@ return [
 
     'retry' => 3,
 ];
+
 ```
 
 ## Usage

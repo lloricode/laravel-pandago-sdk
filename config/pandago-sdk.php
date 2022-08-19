@@ -1,5 +1,7 @@
 <?php
 // config for Lloricode/LaravelPandagoSdk
+use Illuminate\Support\Str;
+
 return [
     'url' => [
         'auth' => [
@@ -19,7 +21,7 @@ return [
     'jwt' => [
         'expire_in_minutes' => env('PANDAGO_JWT_EXPIRE_IN_MINUTES', 1),
         'key_id' => env('PANDAGO_JWT_KEY_ID'),
-        'jti' => env('PANDAGO_JWT_JTI'),
+        'jti' => env('PANDAGO_JWT_JTI', Str::uuid()),
         'aud' => env('PANDAGO_JWT_AUD')
     ],
 
