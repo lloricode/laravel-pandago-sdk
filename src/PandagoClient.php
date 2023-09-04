@@ -38,7 +38,7 @@ class PandagoClient
             case self::ENVIRONMENT_TESTING:
                 $this->base_url = 'http://sample-pandago-base-api.test';
 
-//                $generateTokenAPI->fake();
+                //                $generateTokenAPI->fake();
 
                 break;
             default:
@@ -48,24 +48,24 @@ class PandagoClient
         $this->token = $generateTokenAPI->generate();
     }
 
-//    /**
-//     * @throws \Exception
-//     * @throws \Psr\SimpleCache\InvalidArgumentException
-//     */
-//    public static function storeAccessToken(GenerateTokenAPI $generateTokenAPI): void
-//    {
-//        if (cache()->has(config('pandago-sdk.cache_key'))) {
-//            return;
-//        }
-//
-//        $token = $generateTokenAPI->token();
-//
-//        cache()->put(
-//            config('pandago-sdk.cache_key'),
-//            $token->access_token,
-//            now()->addSeconds($token->expires_in)
-//        );
-//    }
+    //    /**
+    //     * @throws \Exception
+    //     * @throws \Psr\SimpleCache\InvalidArgumentException
+    //     */
+    //    public static function storeAccessToken(GenerateTokenAPI $generateTokenAPI): void
+    //    {
+    //        if (cache()->has(config('pandago-sdk.cache_key'))) {
+    //            return;
+    //        }
+    //
+    //        $token = $generateTokenAPI->token();
+    //
+    //        cache()->put(
+    //            config('pandago-sdk.cache_key'),
+    //            $token->access_token,
+    //            now()->addSeconds($token->expires_in)
+    //        );
+    //    }
 
     public function client(): PendingRequest
     {
