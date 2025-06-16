@@ -2,7 +2,6 @@
 
 use Lloricode\LaravelPandagoSdk\API\Auth\GenerateTokenAPI;
 use Lloricode\LaravelPandagoSdk\Commands\GenerateKeyPairCommand;
-
 use Lloricode\LaravelPandagoSdk\Facades\LaravelPandagoSdk;
 use Lloricode\LaravelPandagoSdk\PandagoClient;
 
